@@ -38,7 +38,8 @@ def enviroment():
   c = input()
   if c == 'S':
     let_guess()
-  elif c == 'R':
+  else:
+    print('R')
     guess()
 
 def let_guess():
@@ -72,13 +73,12 @@ def guess():
     byc = [int(bulls_cows[0]),int(bulls_cows[1])]
     history_bulls_cows.append(byc)
     if (byc == [0, 4]):
-      print ("ENCONTRADO")
-      print("El numero es: ", g)
+#      print ("ENCONTRADO")
+#      print("El numero es: ", g)
       break
 
 # perms2 is a filter permutations options
     perms2 = []
-    print(perms2)
     for p in perms:
       hpta = NoBulls_cows(p,guess)
       hptaN = [int(hpta[0]),int(hpta[2])]
