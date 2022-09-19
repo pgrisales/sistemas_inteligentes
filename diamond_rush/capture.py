@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-import cv2 as cv
+import cv2 
 import numpy as np
 import glob
 
 level1_path = './img/level1.png'
 mapView= np.zeros((12,10))
 
+aa = cv2.imread(level1_path, cv2.IMREAD_UNCHANGED)
+print(aa.shape)
 # Identifiable objects 
 diamond_path = './img/diamond.png'
-heroe_path = ''
+agent_path = ''
 rock_path = ''
 spikes_path = './img/spikes.png'
 hole_path = ''
@@ -19,35 +21,35 @@ button_path = ''
 doors_path = ''
 
 # PRUEBA MULT SOURCE IMG MATCHING
-#level1_img = cv.imread(level1_path)
+#level1_img = cv2.imread(level1_path)
 #tmp_dat = []
 #f1 = glob.glob('./img/path*.png')
 #
 #for f in f1:
-#  im = cv.imread(f,0)
+#  im = cv2.imread(f,0)
 #  tmp_dat.append(im)
 #
 #for tmp in tmp_dat:
 #  (tH, tW) = tmp.shape[:2]
-#  cv.imshow("Template", tmp)
-#  cv.waitKey(1000)
-#  cv.destroyAllWindows()
-#  result = cv.matchTemplate(tmp,level1_img, cv.TM_CCOEFF)
-#  min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
+#  cv2.imshow("Template", tmp)
+#  cv2.waitKey(1000)
+#  cv2.destroyAllWindows()
+#  result = cv2.matchTemplate(tmp,level1_img, cv2.TM_CCOEFF)
+#  min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 #  top_left = max_loc
 #  bottom_right = (top_left[0] + tW, top_left[1] + tH)
-#  cv.rectangle(level1_img,top_left, bottom_right,255, 2)
+#  cv2.rectangle(level1_img,top_left, bottom_right,255, 2)
 #
 #cv2.imshow('Result',level1_img)
 #cv2.waitKey(0)
 # end prueba
 
 def objPos(env,obj,t,eps):
-  env_img = cv.imread(env, cv.IMREAD_UNCHANGED)
-  obj_img = cv.imread(obj, cv.IMREAD_UNCHANGED)
+  env_img = cv2.imread(env, cv2.IMREAD_UNCHANGED)
+  obj_img = cv2.imread(obj, cv2.IMREAD_UNCHANGED)
 
   obj_shape = obj_img.shape
-  obj_match = cv.matchTemplate(env_img, obj_img, cv.TM_SQDIFF_NORMED)
+  obj_match = cv2.matchTemplate(env_img, obj_img, cv2.TM_SQDIFF_NORMED)
 
   locations = np.where(obj_match <= t)
   locations = list(zip(*locations[::-1]))
@@ -59,15 +61,15 @@ def objPos(env,obj,t,eps):
     rectangles.append(rect)
     rectangles.append(rect)
 
-#  rectangles, weights = cv.groupRectangles(rectangles, groupThreshold=1, eps=0.5)
-  rectangles, weights = cv.groupRectangles(rectangles, groupThreshold=1, eps=eps)
+#  rectangles, weights = cv2.groupRectangles(rectangles, groupThreshold=1, eps=0.5)
+  rectangles, weights = cv2.groupRectangles(rectangles, groupThreshold=1, eps=eps)
   points = []
 
   if len(rectangles):
     line_color = (0, 255, 0)
-    line_type = cv.LINE_4
+    line_type = cv2.LINE_4
     marker_color = (255, 0, 255)
-    marker_type = cv.MARKER_CROSS
+    marker_type = cv2.MARKER_CROSS
 
     # Loop over all the rectangles
     for (x, y, w, h) in rectangles:
@@ -80,9 +82,9 @@ def objPos(env,obj,t,eps):
       top_left = (x, y)
       bottom_right = (x + w, y + h)
       # Draw the box
-      a = cv.rectangle(env_img, top_left, bottom_right, color=line_color, lineType=line_type, thickness=2)
-    cv.imshow('Matches', a)
-    cv.waitKey()
+      a = cv2.rectangle(env_img, top_left, bottom_right, color=line_color, lineType=line_type, thickness=2)
+    cv2.imshow('Matches', a)
+    cv2.waitKey()
   return points
 
 
@@ -128,8 +130,8 @@ mapObjLoc(init_state)
 #print(len(path))
 #print(path)
 
-#cv.imshow('Matches', a)
-#cv.waitKey()
+#cv2.imshow('Matches', a)
+#cv2.waitKey()
 
 #if __name__ '__main__':
 #  return
