@@ -118,32 +118,11 @@ def cleanData(p):
   print('duplicates: ',len(duplicates))
 
 blk_dir = './blocks/'
-walls_dir = './blocks/walls/'
-walls_dir = './blocks/walls/'
-gBlk_dir = './gBlocks/'
-lava_dir = './blocks/lava/'
-keys_dir = './blocks/keys/'
-holes_dir = './blocks/holes/'
-agent_dir = './blocks/agent/'
-button_dir = './blocks/button/'
-diamonds_dir = './blocks/diamonds/'
-goal_dir = './blocks/diamonds/'
-
-#wB = [walls_dir+str(x) for x in os.listdir(walls_dir) if x[len(x)-3:] == 'png']
-#lB = [lava_dir+str(x) for x in os.listdir(lava_dir) if x[len(x)-3:] == 'png']
-#kB = [keys_dir+str(x) for x in os.listdir(keys_dir) if x[len(x)-3:] == 'png']
-#hB = [holes_dir+str(x) for x in os.listdir(holes_dir) if x[len(x)-3:] == 'png']
-#aB = [agent_dir+str(x) for x in os.listdir(agent_dir) if x[len(x)-3:] == 'png']
-#bB = [button_dir+str(x) for x in os.listdir(button_dir) if x[len(x)-3:] == 'png']
-#dB = [diamonds_dir+str(x) for x in os.listdir(diamonds_dir) if x[len(x)-3:] == 'png']
 
 #ds = [os.path.join(blk_dir,x) for x in os.listdir(blk_dir) if os.path.isdir(os.path.join(blk_dir,x))]
 #for i in ds:
 #  p = [os.path.join(i,str(x)) for x in os.listdir(i) if x[len(x)-3:] == 'png']
 #  cleanData(p)
-
-#gBlks = [gBlk_dir+str(x) for x in os.listdir(gBlk_dir) if x[len(x)-3:] == 'png']
-#blks = [blk_dir+str(x) for x in os.listdir(blk_dir) if x[len(x)-3:] == 'png']
 
 #for i in imgs:
 #  blockify(i)
