@@ -124,8 +124,8 @@ c = levels[8]
 d = p[0][0]
 #d = p[13][0]
 #print(type(p[9]))
-print(d)
-extractI(c, d)
+#print(d)
+#extractI(c, d)
 #for idx,i in enumerate(levels):
 #  n = extractI(c, i)
 #  print(n)
@@ -161,58 +161,101 @@ def crop(a):
 #  crop(i)
 #  extractI(ai,a)
 
+count = 0
+### Creates Matrix -> for all levels... still not good accurate
 def extract(objs, env):
   mapView= np.chararray((15,10))
-  mapView[:] = 'x'
+  mapView.fill('x')
+#  mapView[:] = 'x'
+#  print(mapView[0,0])
+#  print(type(mapView[0,0]))
+  if mapView[0,0] == 'x':
+    print('working')
   env_blks = blockify(env)
+  global count
   for i in range(15):
     for j in range(10):
 #      envB = cv2.imread(env_blks[i,j], cv2.IMREAD_GRAYSCALE)
       for k in range(0,len(objs)):
-        print(i,j, mapView[i,j])
+# no funciona igualdad
+        if mapView[i,j] == 'x':
+          print('hpta puta')
+          break
+#        print(i,j, mapView[i,j])
         for z in objs[k]:
 #          print(z)
           objB = cv2.imread(z, cv2.IMREAD_GRAYSCALE)
           if objB.shape == (88,88) and env_blks[i,j].shape == (88,88):
             diff = cv2.absdiff(objB,env_blks[i,j])
             diffM = np.mean(diff)
-            if diffM < 12:
+            if diffM < 5.5:
 #              cv2.imshow('a',objB)
 #              cv2.imshow('b',env_blks[i,j])
 #              cv2.waitKey(0)
               if k == 0:
                 mapView[i,j] = 'a' # agent
+                count += 1
+                break
               elif k == 1:
-                mapView[i,j] = '@' # spikes
+                mapView[i,j] = 's' # spikes
+                count += 1
                 print('spike in: ', i,j)
+                break
               elif k == 2:
-                mapView[i,j] = 'q' # kdoors
+                mapView[i,j] = 'K' # kdoors
+                count += 1
+                break
               elif k == 3:
                 mapView[i,j] = 'g' # goal
+                count += 1
+                break
               elif k == 4:
                 mapView[i,j] = 'k' # keys
+                count += 1
+                break
               elif k == 5:
                 mapView[i,j] = 'l' # lava
+                count += 1
+                break
               elif k == 6:
                 mapView[i,j] = 'w' # wall
+                count += 1
+                break
               elif k == 7:
                 mapView[i,j] = 'd' # diamonds
+                count += 1
+                break
               elif k == 8:
                 mapView[i,j] = 'b' # button
+                count += 1
+                break
               elif k == 9:
                 mapView[i,j] = 'h' # holes
+                count += 1
+                break
               elif k == 10:
-                mapView[i,j] = 'v' # bDoor
+                mapView[i,j] = 'B' # bDoor
+                count += 1
+                break
               elif k == 11:
-                mapView[i,j] = 'r' # stones
+                mapView[i,j] = 'r' # rock
+                count += 1
+                break
               elif k == 12:
                 mapView[i,j] = 'p' # path
-              break
-      if mapView != 'x':
-        continue
+                count += 1
+                break
   print(mapView)
+  print()
+  print(env)
+  print('count: ',count)
+  print()
+  return mapView
 
-#extract(objs,levels[1])
+for i in levels:
+  m = extract(objs,i)
+#  np.savetxt('./levels/default_init_states/'+i[:len(i)-4], m)
+
 # PRUEBA MULT SOURCE IMG MATCHING
 #level1_img = cv2.imread(level1_path)
 #tmp_dat = []
