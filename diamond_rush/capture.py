@@ -164,23 +164,19 @@ def crop(a):
 count = 0
 ### Creates Matrix -> for all levels... still not good accurate
 def extract(objs, env):
-  mapView= np.chararray((15,10))
+  mapView= np.chararray((15,10),unicode=True)
   mapView.fill('x')
 #  mapView[:] = 'x'
-#  print(mapView[0,0])
-#  print(type(mapView[0,0]))
-  if mapView[0,0] == 'x':
-    print('working')
   env_blks = blockify(env)
   global count
   for i in range(15):
     for j in range(10):
 #      envB = cv2.imread(env_blks[i,j], cv2.IMREAD_GRAYSCALE)
+      diffM = -1
       for k in range(0,len(objs)):
-# no funciona igualdad
-        if mapView[i,j] == 'x':
-          print('hpta puta')
-          break
+# no funciona igualdad pq son bytes -> cast
+#        if mapView[i,j].decode('utf-8') != 'x':
+#          break
 #        print(i,j, mapView[i,j])
         for z in objs[k]:
 #          print(z)
@@ -188,7 +184,8 @@ def extract(objs, env):
           if objB.shape == (88,88) and env_blks[i,j].shape == (88,88):
             diff = cv2.absdiff(objB,env_blks[i,j])
             diffM = np.mean(diff)
-            if diffM < 5.5:
+            if diffM < 5:
+              # 4 -> 2283/140 = 16.30
 #              cv2.imshow('a',objB)
 #              cv2.imshow('b',env_blks[i,j])
 #              cv2.waitKey(0)
@@ -252,9 +249,13 @@ def extract(objs, env):
   print()
   return mapView
 
-for i in levels:
-  m = extract(objs,i)
-#  np.savetxt('./levels/default_init_states/'+i[:len(i)-4], m)
+#for i in levels:
+#  m = extract(objs,i)
+#  np.savetxt('./levels/default_init_states/'+i[9:len(i)-4], m,fmt='%c')
+load = np.loadtxt('./levels/default_init_states/0',dtype=str)#.reshape(15,10)
+print(load)
+print(load.shape)
+print(type(load))
 
 # PRUEBA MULT SOURCE IMG MATCHING
 #level1_img = cv2.imread(level1_path)
