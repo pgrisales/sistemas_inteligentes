@@ -74,17 +74,9 @@ def rmEmptyF(p):
       shutil.rmtree(i)
 
 def cleanData(p):
-  import imagehash
-  from PIL import Image
   searched = set()
   duplicates = set()
   i = 0
-#  img1 = cv2.imread(p[0], cv2.IMREAD_GRAYSCALE)
-#  h1 = imagehash.average_hash(Image.open(p[0]))
-#  h2 = imagehash.average_hash(img1)
-#  print(h1)
-#  print(h2)
-#  print(h2-h1)
   a = -1 
   while i < len(p):
     if p[i] in duplicates:

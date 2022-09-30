@@ -324,7 +324,6 @@ def objPos(env,obj,t,eps):
     cv2.waitKey()
   return points
 
-
 #path = objPos(level1_path,path_path,0.0007, 0.2)
 # THRESHOLD VALUES WORKING 
 #diamonds = objPos(level1_path,diamond_path,0.01, 0.5)
