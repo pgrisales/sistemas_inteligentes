@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import cv2 
 import numpy as np
-import glob
+# import glob // glob vs manually
 import os
 
 levels_dir = './levels/'
@@ -15,8 +15,6 @@ p = []
 for i in blks:
   p.append([os.path.join(i,str(x)) for x in os.listdir(i) if x[len(x)-3:] == 'png'])
 
-#mapView= np.chararray((15,10))
-#mapView[:] = 'p'
 objs = []
 for idx,i in enumerate(blks):
   objs.append([os.path.join(i,x) for x in os.listdir(i) if x[len(x)-3:] == 'png'])
@@ -25,32 +23,18 @@ def blockify(img_p):
   img = cv2.imread(img_p, cv2.IMREAD_GRAYSCALE)
   bs = 88
   blks = np.empty([15,10], dtype=object) 
-#  print(img.shape)
-#  print(blks)
-#  print(blks[0,1])
+
   for i in range(15):
     for j in range(10):
       x = bs*(j+1)
       y = bs*(i+1)
-#      print(x)
-      #img_b = img[bs*i:y][bs*j:x]
       img_b = img[bs*i:y, bs*j:x]
       blks[i,j] = img_b
-#      cv2.imshow('a',blks[i,j])
-#      cv2.waitKey(0)
-#      print(img_b)
-#  print(blks[0,0])
 #  cv2.imshow('a',blks[0,5])
 #  cv2.waitKey(0)
   return blks 
 
-#for i in range(0,len(objs)):
-#  print(objs[i][0])
-#print(objs[2][0])
-#print(objs[3][0])
-#aa = blockify(levels[0])
-
-def extractI(img1_p,img2_p):
+def whichLevel(img1_p,img2_p):
   from matplotlib import pyplot as plt
   img1 = cv2.imread(img1_p, cv2.IMREAD_GRAYSCALE)
   img2 = cv2.imread(img2_p, cv2.IMREAD_GRAYSCALE)
@@ -112,7 +96,7 @@ def extractI(img1_p,img2_p):
 #  plt.imshow(img1), plt.show()
 #  plt.imshow(img2), plt.show()
 
-#extractI(levels[4], levels[1])
+#whichLevel(levels[4], levels[1])
 #print(levels[0])
 #for i in levelsC:
 best = -1
@@ -125,9 +109,9 @@ d = p[0][0]
 #d = p[13][0]
 #print(type(p[9]))
 #print(d)
-#extractI(c, d)
+#whichLevel(c, d)
 #for idx,i in enumerate(levels):
-#  n = extractI(c, i)
+#  n = whichLevel(c, i)
 #  print(n)
 #  if n > nM:
 #    nM = n
@@ -145,9 +129,8 @@ d = p[0][0]
 #print(levels[best])
 #print('nMatches: ', nM)
 #print('best', best)
-#extractI(objs[6][1], levels[1])
-"""
-"""
+#whichLevel(objs[6][1], levels[1])
+
 def crop(a):
   ai = cv2.imread(a, cv2.IMREAD_GRAYSCALE)
 # Define size of new Image
@@ -159,7 +142,7 @@ def crop(a):
 #crop(levels[0])
 #for i in levelsC:
 #  crop(i)
-#  extractI(ai,a)
+#  whichLevel(ai,a)
 
 count = 0
 ### Creates Matrix -> for all levels... still not good accurate
@@ -257,29 +240,7 @@ print(load)
 print(load.shape)
 print(type(load))
 
-# PRUEBA MULT SOURCE IMG MATCHING
-#level1_img = cv2.imread(level1_path)
-#tmp_dat = []
-#f1 = glob.glob('./img/path*.png')
-#
-#for f in f1:
-#  im = cv2.imread(f,0)
-#  tmp_dat.append(im)
-#
-#for tmp in tmp_dat:
-#  (tH, tW) = tmp.shape[:2]
-#  cv2.imshow("Template", tmp)
-#  cv2.waitKey(1000)
-#  cv2.destroyAllWindows()
-#  result = cv2.matchTemplate(tmp,level1_img, cv2.TM_CCOEFF)
-#  min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
-#  top_left = max_loc
-#  bottom_right = (top_left[0] + tW, top_left[1] + tH)
-#  cv2.rectangle(level1_img,top_left, bottom_right,255, 2)
-#
-#cv2.imshow('Result',level1_img)
-#cv2.waitKey(0)
-# end prueba
+# SEARCH MULT. SOURCE IMG MATCHING
 
 def objPos(env,obj,t,eps):
   env_img = cv2.imread(env, cv2.IMREAD_UNCHANGED)
@@ -324,13 +285,11 @@ def objPos(env,obj,t,eps):
     cv2.waitKey()
   return points
 
-#path = objPos(level1_path,path_path,0.0007, 0.2)
 # THRESHOLD VALUES WORKING 
 #diamonds = objPos(level1_path,diamond_path,0.01, 0.5)
 #spikes = objPos(level1_path,spikes_path,0.0019, 0.5)
 #goal = objPos(level1_path,goal_path,0.001,0.5)
 # FOR WALL NEED TO ADD MORE WALL IMAGES FOR BETTER RESULTS
-#wall,a = objPos(level1_path,wall_path,0.01,0.5)
 
 def mapObjLoc(state):
   test = np.zeros((12,10))
