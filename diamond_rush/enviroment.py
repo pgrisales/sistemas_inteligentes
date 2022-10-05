@@ -3,7 +3,8 @@ import cv2
 import numpy as np
 import os
 
-levels_dir = './levels/'
+levels_dir = './levels/cropHalf2/'
+#levels_dir = './levels/'
 levels = [os.path.join(levels_dir,x) for x in os.listdir(levels_dir) if x[len(x)-3:] == 'png']
 ### TODO SORT LEVELS
 #print(levels)
@@ -12,10 +13,10 @@ levels = [os.path.join(levels_dir,x) for x in os.listdir(levels_dir) if x[len(x)
 
 def matchLevels(img1_p,img2_p):
   from matplotlib import pyplot as plt
-  img1 = cv2.imread(img1_p, cv2.IMREAD_GRAYSCALE)
-  img2 = cv2.imread(img2_p, cv2.IMREAD_GRAYSCALE)
-#  img1 = cv2.imread(img1_p, cv2.IMREAD_UNCHANGED)
-#  img2 = cv2.imread(img2_p, cv2.IMREAD_UNCHANGED)
+#  img1 = cv2.imread(img1_p, cv2.IMREAD_GRAYSCALE)
+#  img2 = cv2.imread(img2_p, cv2.IMREAD_GRAYSCALE)
+  img1 = cv2.imread(img1_p, cv2.IMREAD_UNCHANGED)
+  img2 = cv2.imread(img2_p, cv2.IMREAD_UNCHANGED)
 
 # Initiate ORB detector
   orb = cv2.ORB_create()
@@ -32,16 +33,17 @@ def matchLevels(img1_p,img2_p):
   good = []
   for i,j in matches:
 #    if i.distance < 0.3*j.distance:
-    if i.distance < 0.7*j.distance:
+    if i.distance < 0.9*j.distance:
+#    if i.distance < 0.7*j.distance:
       good.append([i])
 
   return len(good)
 
-def whichLevel():
+def whichLevel(ss):
   best = -1
   nM = -1
   # Fails with idx: 11, 15
-  c = levels[8]
+  c = ss
   for idx,i in enumerate(levels):
     n = matchLevels(c, i)
     print(n)
@@ -62,8 +64,8 @@ class Level:
 
 ### manage interactions btw Level and Agent... and it captures image of enviroment, dk if rules goes here or in level
 class Enviroment:
-  level = Level(whichLevel())
-  state = np.loadtxt('./levels/default_init_states/0',dtype=str)#.reshape(15,10)
+#  level = Level(whichLevel())
+#  state = np.loadtxt('./levels/default_init_states/0',dtype=str)#.reshape(15,10)
   ### TODO: check if agent has change pos, add metadata of levels as txt... add rules
   ### TODO probably need to remember 2 states back for spikes and some rocks interactions...
   

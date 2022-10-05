@@ -5,7 +5,7 @@ import numpy as np
 import os
 
 levels_dir = './levels/'
-levelsC_dir = './levels/crop/'
+levelsC_dir = './levels/cropHalf2/'
 blks_dir = './blocks/'
 #levels = [os.path.join(levels_dir,x) for x in os.listdir(levels_dir) if os.path.isdir(os.path.join(levels_dir,x))]
 levels = [os.path.join(levels_dir,x) for x in os.listdir(levels_dir) if x[len(x)-3:] == 'png']
@@ -35,14 +35,13 @@ def blockify(img_p):
   return blks 
 
 def crop(a):
-  ai = cv2.imread(a, cv2.IMREAD_GRAYSCALE)
+  ai = cv2.imread(a, cv2.IMREAD_UNCHANGED)
 # Define size of new Image
-  ai = ai[88*3:len(ai)-88, 88:len(a[0])-88]
-#  cv2.imwrite(a,ai)
+  ai = ai[88*5:len(ai)-88, 88:len(a[0])-88]
+  cv2.imwrite(a,ai)
 #  cv2.imshow('a',ai)
 #  cv2.waitKey(0)
 
-#crop(levels[0])
 #for i in levelsC:
 #  crop(i)
 
@@ -281,23 +280,23 @@ c = levels[8]
 #print(type(p[9]))
 #print(d)
 #whichLevel(c, d)
-for idx,i in enumerate(levels):
-  n = whichLevel(c, i)
-  print(n)
-  if n > nM:
-    nM = n
-    best = idx
-
-img1 = cv2.imread(c, cv2.IMREAD_GRAYSCALE)
-img2 = cv2.imread(levels[best], cv2.IMREAD_GRAYSCALE)
-
-cv2.imshow(c,img1)
-cv2.imshow(levels[best],img2)
-
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-print(c)
-print(levels[best])
+#for idx,i in enumerate(levels):
+#  n = whichLevel(c, i)
+#  print(n)
+#  if n > nM:
+#    nM = n
+#    best = idx
+#
+#img1 = cv2.imread(c, cv2.IMREAD_GRAYSCALE)
+#img2 = cv2.imread(levels[best], cv2.IMREAD_GRAYSCALE)
+#
+#cv2.imshow(c,img1)
+#cv2.imshow(levels[best],img2)
+#
+#cv2.waitKey(0)
+#cv2.destroyAllWindows()
+#print(c)
+#print(levels[best])
 #print('nMatches: ', nM)
 #print('best', best)
 #whichLevel(objs[6][1], levels[1])
