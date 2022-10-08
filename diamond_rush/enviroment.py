@@ -23,7 +23,7 @@ def reject_outliers(data, m=0.6):
       data[i] = data[i-1]
   return data
 
-### TEMPLATE MATCHING... BEST RESULTS
+### TEMPLATE MATCHING... PROBLEMS WITH IMAGE OF DIFERENT SIZE
 def matchI(img, templates):
   bestMatch = -1
   matchValue = -9999
@@ -41,6 +41,7 @@ def matchI(img, templates):
     if mv > matchValue:
       bestMatch = idx
       matchValue = mv
+
   return templates[bestMatch]
 
 # INIT -> TODO TAKE BROWSER SCREEENSHOT THEN CALL capture: crop game zone
@@ -57,7 +58,6 @@ def capture(img_p,templates):
     template = cv2.imread(i)
     template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
     w, h = template.shape[::-1]
-
     res = cv2.matchTemplate(img,template,cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
 
@@ -83,7 +83,8 @@ def capture(img_p,templates):
   br = [int(np.mean(reject_outliers(brx))),int(np.mean(reject_outliers(bry)))]
 
   res = img[tl[1]:br[1], tl[0]:br[0]]
-
+  plt.imshow(res,cmap = 'gray')
+  plt.show()
   return matchI(res,templates)
 
 #  crop(img,tl,br,img_p)
@@ -107,6 +108,54 @@ def capture(img_p,templates):
 #  plt.imshow(img,cmap = 'gray')
 #  plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
 #  plt.show()
+
+### BEST OVERALL
+def mSift(img1_p,img2_p):
+  from matplotlib import pyplot as plt
+  MIN_MATCH_COUNT = 4
+#  MIN_MATCH_COUNT = 10
+  img1 = cv2.imread(img1_p) # queryImage
+  img2 = cv2.imread(img2_p) # trainImage
+  img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+  img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+# Initiate SIFT detector
+  sift = cv2.SIFT_create()
+## find the keypoints and descriptors with SIFT
+  kp1, des1 = sift.detectAndCompute(img1,None)
+  kp2, des2 = sift.detectAndCompute(img2,None)
+
+  FLANN_INDEX_KDTREE = 0
+  index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
+  search_params = dict(checks = 50)
+
+  flann = cv2.FlannBasedMatcher(index_params, search_params)
+  matches = flann.knnMatch(des1,des2,k=2)
+# store all the good matches as per Lowe's ratio test.
+  good = []
+  for m,n in matches:
+    if m.distance < 0.7*n.distance:
+      good.append(m)
+  if len(good) > MIN_MATCH_COUNT:
+    src_pts = np.float32([ kp1[m.queryIdx].pt for m in good ]).reshape(-1,1,2)
+    dst_pts = np.float32([ kp2[m.trainIdx].pt for m in good ]).reshape(-1,1,2)
+
+    M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC,5.0)
+    matchesMask = mask.ravel().tolist()
+
+    h,w = img1.shape
+    pts = np.float32([ [0,0],[0,h-1],[w-1,h-1],[w-1,0] ]).reshape(-1,1,2)
+    dst = cv2.perspectiveTransform(pts,M)
+    print(dst)
+
+    img2 = cv2.polylines(img2,[np.int32(dst)],True,255,9, cv2.LINE_AA)
+    plt.imshow(img2, 'gray'),plt.show()
+
+  else:
+    print("Not enough matches are found - %d/%d" % (len(good),MIN_MATCH_COUNT))
+    matchesMask = None
+
+#  img3 = cv2.drawMatches(img1,kp1,img2,kp2,good,None)
+#  plt.imshow(img3, 'gray'),plt.show()
 
 ### FEATURE MATCHING BFMATCHING AND HOMOGRAPHY-> getting some errors
 def mL(img1_p,img2_p):
@@ -136,14 +185,12 @@ def mL(img1_p,img2_p):
   pts = np.float32([ [0,0],[0,h-1],[w-1,h-1],[w-1,0] ]).reshape(-1,1,2)
   dst = cv2.perspectiveTransform(pts,M)
 ## draw found regions
-#  img2 = cv2.polylines(img2, [np.int32(dst)], True, (0,0,255), 8, cv2.LINE_AA)
+  img2 = cv2.polylines(img2, [np.int32(dst)], True, (0,0,255), 8, cv2.LINE_AA)
 #  cv2.imshow("found", img2)
-#  plt.imshow(img2,'gray'),plt.show()
-## draw match lines
+  plt.imshow(img2,'gray'),plt.show()
+# draw match lines
 #  res = cv2.drawMatches(img1, kp1, img2, kp2, dmatches[:90],None,flags=2)
-
 #  cv2.imshow("orb_match", res);
-
 #  cv2.waitKey();cv2.destroyAllWindows()
 
 #  img3 = cv2.drawMatches(img1, kp1, img2, kp2, matches, None)
