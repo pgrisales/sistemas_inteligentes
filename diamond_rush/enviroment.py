@@ -3,6 +3,19 @@ import cv2
 import numpy as np
 import os
 
+is_0 = np.loadtxt('./levels/default_init_states/0',dtype=str)#.reshape(15,10)
+fs_0 = np.loadtxt('./levels/final_states/0',dtype=str)#.reshape(15,10)
+print('init state 0:') 
+print(is_0)
+
+def agentPos(state):
+  for i in range(0,len(state)):
+    for j in range(0,len(state[0])):
+      if state[i,j] == 'a':
+        return i,j
+
+i,j = agentPos(is_0)
+print(i,j)
 
 ### set up level... its variables,and state 
 class Level:
@@ -21,10 +34,4 @@ class Enviroment:
   def __init__(self):
     pass
 
-class Agent:
-  def __init__(self,pos):
-    self.agentPos = pos
-
-  def compute():
-    pass
 

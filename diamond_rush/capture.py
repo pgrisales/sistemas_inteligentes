@@ -89,8 +89,6 @@ def mSift(img1_p,img2_p):
   else:
     print("Not enough matches are found - %d/%d" % (len(good),MIN_MATCH_COUNT))
     matchesMask = None
-#  img3 = cv2.drawMatches(img1,kp1,img2,kp2,good,None)
-#  plt.imshow(img3, 'gray'),plt.show()
 
 def matchLevel(levels,img2_p):
   MIN_MATCH_COUNT = 4
