@@ -46,7 +46,6 @@ def matchI(img, templates):
 
 # INIT -> TODO TAKE BROWSER SCREEENSHOT THEN CALL capture: crop game zone
 def capture(img_p,templates):
-  from matplotlib import pyplot as plt
   img = cv2.imread(img_p)
 #  template = cv2.imread(template_p)
   img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -83,8 +82,6 @@ def capture(img_p,templates):
   br = [int(np.mean(reject_outliers(brx))),int(np.mean(reject_outliers(bry)))]
 
   res = img[tl[1]:br[1], tl[0]:br[0]]
-  plt.imshow(res,cmap = 'gray')
-  plt.show()
   return matchI(res,templates)
 
 #  crop(img,tl,br,img_p)
@@ -94,9 +91,6 @@ def capture(img_p,templates):
 #  br = [int(np.mean(reject_outliers(brx))),int(np.mean(reject_outliers(bry)))]
 #  print('tl, br', tl, br)
 #  cv2.rectangle(img,tl, br, 255, 8)
-#  plt.imshow(img,cmap = 'gray')
-#  plt.show()
-
 
 #  plt.imshow(img[tl[0]:br[0],img[tl[1]:br[1]]],cmap = 'gray')
 
@@ -105,13 +99,8 @@ def capture(img_p,templates):
 #  return np.mean(res)
 #  cv2.rectangle(img,top_left, bottom_right, 255, 8)
 
-#  plt.imshow(img,cmap = 'gray')
-#  plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
-#  plt.show()
-
 ### BEST OVERALL
 def mSift(img1_p,img2_p):
-  from matplotlib import pyplot as plt
   MIN_MATCH_COUNT = 4
 #  MIN_MATCH_COUNT = 10
   img1 = cv2.imread(img1_p) # queryImage
@@ -145,21 +134,68 @@ def mSift(img1_p,img2_p):
     h,w = img1.shape
     pts = np.float32([ [0,0],[0,h-1],[w-1,h-1],[w-1,0] ]).reshape(-1,1,2)
     dst = cv2.perspectiveTransform(pts,M)
-    print(dst)
 
-    img2 = cv2.polylines(img2,[np.int32(dst)],True,255,9, cv2.LINE_AA)
-    plt.imshow(img2, 'gray'),plt.show()
+    dst = np.int32(dst)
+    tl = (dst[0][0][0], dst[0][0][1])
+    br = (dst[2][0][0], dst[2][0][1])
+    res = img2[tl[1]:br[1], tl[0]:br[0]]
 
+    return res
+#    img2 = cv2.polylines(img2,[np.int32(dst)],True,255,9, cv2.LINE_AA)
+#    cv2.rectangle(img2,tl,br , 255, 8)
+#    crop(img2,tl,br,img2_p)
+#    cv2.circle(img2,br,radius=0, color=(0,0,255), thickness=8)
   else:
     print("Not enough matches are found - %d/%d" % (len(good),MIN_MATCH_COUNT))
     matchesMask = None
-
 #  img3 = cv2.drawMatches(img1,kp1,img2,kp2,good,None)
 #  plt.imshow(img3, 'gray'),plt.show()
 
+def matchLevel(levels,img2_p):
+  MIN_MATCH_COUNT = 4
+#  MIN_MATCH_COUNT = 10
+#  img2 = cv2.imread(mSift(levels[1],img2_p)) # queryImage
+  img2 = mSift(levels[1],img2_p) # queryImage
+#  img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+  bestMatch = 0
+  nMatches = -9999
+# Initiate SIFT detector
+  sift = cv2.SIFT_create()
+  for idx,i in enumerate(levels):
+    img1 = cv2.imread(i) # trainImage
+    img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+## find the keypoints and descriptors with SIFT
+    kp1, des1 = sift.detectAndCompute(img1,None)
+    kp2, des2 = sift.detectAndCompute(img2,None)
+
+    FLANN_INDEX_KDTREE = 0
+    index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
+    search_params = dict(checks = 50)
+
+    flann = cv2.FlannBasedMatcher(index_params, search_params)
+    matches = flann.knnMatch(des1,des2,k=2)
+# store all the good matches as per Lowe's ratio test.
+    good = []
+    for m,n in matches:
+      if m.distance < 0.7*n.distance:
+        good.append(m)
+    if len(good) > nMatches:
+      bestMatch = idx
+      nMatches = len(good)
+
+  bMI = cv2.imread(levels[bestMatch])
+#  bMI = cv2.cvtColor(bMI, cv2.COLOR_BGR2GRAY)
+
+#  img3 = cv2.hconcat([bMI,img2])
+  cv2.imshow('Best Match '+levels[bestMatch], bMI)
+  cv2.waitKey(0);cv2.destroyAllWindows()
+  cv2.imshow('Test Image', img2)
+  cv2.waitKey(0);cv2.destroyAllWindows()
+
+  return levels[bestMatch]
+
 ### FEATURE MATCHING BFMATCHING AND HOMOGRAPHY-> getting some errors
 def mL(img1_p,img2_p):
-  from matplotlib import pyplot as plt
   MIN_MATCH_COUNT = 4  
 #  img1 = cv2.imread(img1_p, cv2.IMREAD_GRAYSCALE)
 #  img2 = cv2.imread(img2_p, cv2.IMREAD_GRAYSCALE)
@@ -187,21 +223,18 @@ def mL(img1_p,img2_p):
 ## draw found regions
   img2 = cv2.polylines(img2, [np.int32(dst)], True, (0,0,255), 8, cv2.LINE_AA)
 #  cv2.imshow("found", img2)
-  plt.imshow(img2,'gray'),plt.show()
 # draw match lines
 #  res = cv2.drawMatches(img1, kp1, img2, kp2, dmatches[:90],None,flags=2)
 #  cv2.imshow("orb_match", res);
 #  cv2.waitKey();cv2.destroyAllWindows()
 
 #  img3 = cv2.drawMatches(img1, kp1, img2, kp2, matches, None)
-#  plt.imshow(img3, 'gray'), plt.show()
 
   return len(matches)
 
 
 ### FEATURE MATCHING KNN-> getting some errors
 def matchLevels(img1_p,img2_p):
-  from matplotlib import pyplot as plt
 #  img1 = cv2.imread(img1_p, cv2.IMREAD_GRAYSCALE)
 #  img2 = cv2.imread(img2_p, cv2.IMREAD_GRAYSCALE)
   img1 = cv2.imread(img1_p)
@@ -224,7 +257,6 @@ def matchLevels(img1_p,img2_p):
       good.append([i])
 
 #  img3 = cv2.drawMatchesKnn(img1, kp1, img2, kp2, good, None)
-#  plt.imshow(img3, 'gray'), plt.show()
   return len(good)
 
 def whichLevel(ss):
