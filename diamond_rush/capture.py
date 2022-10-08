@@ -34,16 +34,9 @@ def blockify(img_p):
 #  cv2.waitKey(0)
   return blks 
 
-def crop(a):
-  ai = cv2.imread(a, cv2.IMREAD_UNCHANGED)
-# Define size of new Image
-  ai = ai[88*5:len(ai)-88, 88:len(a[0])-88]
-  cv2.imwrite(a,ai)
-#  cv2.imshow('a',ai)
-#  cv2.waitKey(0)
-
-#for i in levelsC:
-#  crop(i)
+def crop(img, top_left,bottom_right,save_dir):
+  img = img[top_left[1]:bottom_right[1],top_left[0]:bottom_right[0]]
+  cv2.imwrite(save_dir, img)
 
 count = 0
 ### Creates Matrix -> for all levels... still not good accurate
