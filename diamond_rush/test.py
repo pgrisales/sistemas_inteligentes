@@ -9,7 +9,7 @@ from enviroment import mL
 from enviroment import capture
 
 #fs = [os.path.join(blk_dir,x) for x in os.listdir(p) if os.path.isdir(os.path.join(blk_dir,x))]
-ss_tests = './levels/ss_test/'
+ss_tests = './levels/ss_test2/'
 
 test = [os.path.join(ss_tests,x) for x in os.listdir(ss_tests) if os.path.isdir(os.path.join(ss_tests,x))]
 test.sort()
@@ -36,3 +36,26 @@ for i in test:
 #  capture(i,levels)
 #state = np.loadtxt('./levels/default_init_states/0',dtype=str)#.reshape(15,10)
 
+### test of main file
+#test_img = './test_img.png'
+#ts = t[5][0]
+#print(ts)
+#print(matchI(ts,levels))
+
+#for i in t:
+#  for j in i:
+#    print(j)
+#    print(matchLevel(levels,j))
+#    print()
+###
+### test 2 main
+#print(matchLevel(levels,t[3][2]))
+#for i in t:
+#  for j in range(1):
+#    print(i[j])
+#    print(matchLevel(levels,i[j]))
+#    print()
+#
+##    print(j)
+##    print(matchLevel(levels,j))
+##    print()

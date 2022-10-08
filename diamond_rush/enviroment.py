@@ -25,8 +25,12 @@ def reject_outliers(data, m=0.6):
 
 ### TEMPLATE MATCHING... PROBLEMS WITH IMAGE OF DIFERENT SIZE
 def matchI(img, templates):
+  img = cv2.imread(img)
+  img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
   bestMatch = -1
   matchValue = -9999
+  print(img.shape)
+#  print(templates[0].shape)
   for idx, i in enumerate(templates):
     template = cv2.imread(i)
     template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
@@ -140,6 +144,8 @@ def mSift(img1_p,img2_p):
     br = (dst[2][0][0], dst[2][0][1])
     res = img2[tl[1]:br[1], tl[0]:br[0]]
 
+#    cv2.imshow('CROP', res)
+#    cv2.waitKey(0);cv2.destroyAllWindows()
     return res
 #    img2 = cv2.polylines(img2,[np.int32(dst)],True,255,9, cv2.LINE_AA)
 #    cv2.rectangle(img2,tl,br , 255, 8)
@@ -177,7 +183,8 @@ def matchLevel(levels,img2_p):
 # store all the good matches as per Lowe's ratio test.
     good = []
     for m,n in matches:
-      if m.distance < 0.7*n.distance:
+#      if m.distance < 0.7*n.distance:
+      if m.distance < 0.1*n.distance:
         good.append(m)
     if len(good) > nMatches:
       bestMatch = idx
@@ -185,7 +192,6 @@ def matchLevel(levels,img2_p):
 
   bMI = cv2.imread(levels[bestMatch])
 #  bMI = cv2.cvtColor(bMI, cv2.COLOR_BGR2GRAY)
-
 #  img3 = cv2.hconcat([bMI,img2])
   cv2.imshow('Best Match '+levels[bestMatch], bMI)
   cv2.waitKey(0);cv2.destroyAllWindows()
