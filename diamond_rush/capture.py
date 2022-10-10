@@ -8,7 +8,7 @@ def crop(img, top_left,bottom_right,save_dir):
   cv2.imwrite(save_dir, img)
 
 levels_dir = './levels/'
-agent_dir = './blocks/agent/1.png'
+agent_dir = './blocks/agent/2.png'
 levels = [os.path.join(levels_dir,x) for x in os.listdir(levels_dir) if x[len(x)-3:] == 'png']
 ### TODO SORT LEVELS
 ### TODO SET LEVELS AS GLOBAL VARIABLES
@@ -16,8 +16,7 @@ levels = [os.path.join(levels_dir,x) for x in os.listdir(levels_dir) if x[len(x)
 def agentPos(agentTemplate, levelTemplate):
   MIN_MATCH_COUNT = 4
 #  MIN_MATCH_COUNT = 10
-  level = cv2.imread(levelTemplate) # queryImage
-  level = cv2.cvtColor(level, cv2.COLOR_BGR2GRAY)
+  level = getFrame(levels[1],levelTemplate) # queryImage
   agent = cv2.imread(agentTemplate) # trainImage
   agent = cv2.cvtColor(agent, cv2.COLOR_BGR2GRAY)
 
@@ -31,11 +30,10 @@ def agentPos(agentTemplate, levelTemplate):
 
   flann = cv2.FlannBasedMatcher(index_params, search_params)
   matches = flann.knnMatch(des1,des2,k=2)
-# store all the good matches as per Lowe's ratio test.
   good = []
   for m,n in matches:
 #      if m.distance < 0.7*n.distance:
-      if m.distance < 0.9*n.distance:
+      if m.distance < 1*n.distance:
         good.append(m)
   print(len(good))
   if len(good) > MIN_MATCH_COUNT:
@@ -56,21 +54,19 @@ def agentPos(agentTemplate, levelTemplate):
     dst = np.int32(dst)
     tl = (dst[0][0][0], dst[0][0][1])
     br = (dst[2][0][0], dst[2][0][1])
-    cv2.rectangle(level,tl,br , 255, 8)
-    cv2.imshow('CROP', level)
-    cv2.waitKey(0);cv2.destroyAllWindows()
-    print('tl:',tl)
-    print('lh:',lh)
-    print('lw:',lw)
+    print(tl)
 
     aPos = (tl[1]//lw,tl[0]//lh)
-    return aPos  
-  #bMI = cv2.imread(levels[bestMatch])
-  #cv2.imshow('Best Match '+levels[bestMatch], bMI)
-  #cv2.waitKey(0);cv2.destroyAllWindows()
-  #cv2.imshow('Test Image', img2)
-  #cv2.waitKey(0);cv2.destroyAllWindows()
+    print('agent position:', aPos)
 
+    cv2.rectangle(level,tl,br , 255, 2)
+#    cv2.circle(level,tl,radius=0, color=(0,0,255), thickness=8)
+    cv2.imshow('CROP', level)
+    cv2.waitKey(0);cv2.destroyAllWindows()
+#    print('tl:',tl)
+#    print('lh:',lh)
+#    print('lw:',lw)
+    return aPos  
 
 ### BEST OVERALL
 def getFrame(img1_p,img2_p):

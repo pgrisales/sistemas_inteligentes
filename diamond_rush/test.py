@@ -18,7 +18,7 @@ t = []
 for i in test:
   t.append([os.path.join(i,str(x)) for x in os.listdir(i) if x[len(x)-3:] == 'png'])
 
-print(agentPos(agent_dir, t[1][0]))
+#print(agentPos(agent_dir, t[1][0]))
 #for i in t:
 #  for j in i:
 #    print(j)
