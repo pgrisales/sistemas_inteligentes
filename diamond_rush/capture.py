@@ -32,8 +32,7 @@ def agentPos(agentTemplate, levelTemplate):
   matches = flann.knnMatch(des1,des2,k=2)
   good = []
   for m,n in matches:
-#      if m.distance < 0.7*n.distance:
-      if m.distance < 1*n.distance:
+      if m.distance < 0.9*n.distance:
         good.append(m)
   print(len(good))
   if len(good) > MIN_MATCH_COUNT:
@@ -54,12 +53,13 @@ def agentPos(agentTemplate, levelTemplate):
     dst = np.int32(dst)
     tl = (dst[0][0][0], dst[0][0][1])
     br = (dst[2][0][0], dst[2][0][1])
-    print(tl)
 
+    print('tl:', tl)
+    print('br:', br)
     aPos = (tl[1]//lw,tl[0]//lh)
     print('agent position:', aPos)
 
-    cv2.rectangle(level,tl,br , 255, 2)
+    cv2.rectangle(level,tl,br , 255, 3)
 #    cv2.circle(level,tl,radius=0, color=(0,0,255), thickness=8)
     cv2.imshow('CROP', level)
     cv2.waitKey(0);cv2.destroyAllWindows()

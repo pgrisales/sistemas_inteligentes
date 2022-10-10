@@ -11,9 +11,10 @@ from random import randint
 
 # PONER EL PATH DE LA IMG DE PRUEBA
 test_img = './test_img.png'
-#for i in range(10):
-i = randint(0,len(t)-1)
-j = randint(0,len(t[i])-1)
-#print(agentPos(agent_dir, t[i][j]))
-#print(matchLevel(levels, test_img))
+for i in range(10):
+  i = randint(0,len(t)-1)
+  j = randint(0,len(t[i])-1)
+  print(agentPos(agent_dir, t[i][j]))
+print(agentPos(agent_dir, test_img))
+print(matchLevel(levels, test_img))
 
