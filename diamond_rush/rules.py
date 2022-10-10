@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import numpy as np
 
 # 'a'  agent
 # 's'  spikes
@@ -41,6 +40,9 @@ def check_rules(a_pos, a_move, p_state, state):
     state[ni,nj] = 'a'
     state[i,j] = 'p'
 
+  elif state[ni,nj] == 'w': # wall
+    pass
+
   # how to represent agent with or without keys!
   elif state[ni,nj] =='K': # kdoors
     pass
@@ -53,8 +55,6 @@ def check_rules(a_pos, a_move, p_state, state):
   elif state[ni,nj] == 'k': # keys
     pass
   elif state[ni,nj] == 'l': # lava
-    pass
-  elif state[ni,nj] == 'w': # wall
     pass
   elif state[ni,nj] == 'd': # diamonds
     pass

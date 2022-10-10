@@ -41,7 +41,6 @@ class Level:
         if state[i,j] == 'a':
           return i,j
 
-
 ### manage interactions btw Level and Agent... and it captures image of enviroment, dk if rules goes here or in level
 class Enviroment:
   ### TODO: check if agent has change pos, add metadata of levels as txt... add rules
