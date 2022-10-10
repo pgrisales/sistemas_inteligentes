@@ -2,6 +2,7 @@
 import cv2 
 import numpy as np
 import os
+from rules import check_rules
 
 #is_0 = np.loadtxt('./levels/default_init_states/0',dtype=str)
 #fs_0 = np.loadtxt('./levels/final_states/0',dtype=str)
@@ -15,9 +16,13 @@ class Level:
     self.level = level
     self.a_pos = a_pos
     self.state, self.f_state = self.load_level(self.level, self.a_pos)
-    pass
+    self.p_state = self.state
 
   def get_state(self):
+    return self.state
+# TODO: define structure for previous and new state
+  def new_state(self, a_move):
+    self.p_state, self.state = check_rules(self.a_pos, a_move, self.p_state, self.state)
     return self.state
 
   def load_level(self, level, a_pos): 
@@ -44,5 +49,12 @@ class Enviroment:
   def __init__(self):
     pass
 
-level = Level(1,1)
+i = [5,2]
+level = Level(1,i)
 print(level.get_state())
+print('pos ', level.agent_pos(level.get_state()))
+print()
+l = [0,-1]
+#print(l[1])
+print(level.new_state(l))
+print('new pos ', level.agent_pos(level.get_state()))
