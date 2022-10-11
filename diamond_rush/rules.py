@@ -13,6 +13,7 @@
 # 'B'  bDoor
 # 'r'  rock
 # 'R' rock over spike
+# 'A' agent over spike
 
 def check_past(i, j, p_state, state):
 
@@ -35,13 +36,12 @@ def check_rules(a_pos, a_move, p_state, state):
     state[ni,nj] == 'a'
 
   elif state[ni,nj] =='p':  # path
-    print('ispath')
     p_state = state
     state[ni,nj] = 'a'
     state[i,j] = 'p'
 
   elif state[ni,nj] == 'w': # wall
-    pass
+    p_state = state
 
   # how to represent agent with or without keys!
   elif state[ni,nj] =='K': # kdoors
@@ -54,6 +54,7 @@ def check_rules(a_pos, a_move, p_state, state):
     
   elif state[ni,nj] == 'k': # keys
     pass
+
   elif state[ni,nj] == 'l': # lava
     pass
   elif state[ni,nj] == 'd': # diamonds
