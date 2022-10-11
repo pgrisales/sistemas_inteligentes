@@ -2,16 +2,28 @@
 class Agent:
   def __init__(self, agent_pos):
     self.agent_pos = agent_pos 
-    self.hasKey = False
+    self.key = False
 
   def compute(self):
     pass
 
-  def hasKey(self):
-    return self.hasKey
+  def play(self):
+    from random import randint
+    d = randint(0,3)
+    if d == 0:
+      return self.left()
+    elif d == 1:
+      return self.right()
+    elif d == 2:
+      return self.up()
+    elif d == 3:
+      return self.down()
 
-  def set_hasKey(self, hasKey):
-    self.hasKey = hasKey
+  def has_key(self):
+    return self.key
+
+  def set_has_key(self, key):
+    self.key = key 
 
   def get_pos(self):
     return self.agent_pos
@@ -31,8 +43,9 @@ class Agent:
 def setGoals():
   pass
 
+"""
 agent = Agent([1,1])
 print(agent.get_pos())
 agent.left()
 print(agent.get_pos())
-
+"""

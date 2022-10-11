@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from agent import Agent
 
 # 'a'  agent
 # 's'  spikes
@@ -14,6 +15,9 @@
 # 'r'  rock
 # 'R' rock over spike
 # 'A' agent over spike
+# '@' agent over key with key
+# agent over button
+# rock over button
 
 def check_past(i, j, p_state, state):
 
@@ -28,43 +32,52 @@ def check_past(i, j, p_state, state):
 
   return state
 
-def check_rules(a_pos, a_move, p_state, state):
-  i, j = a_pos[0], a_pos[1]
-  ni, nj = i + a_move[0], j + a_move[1]
+def check_rules(agent: Agent, a_move, p_state, state):
+  i, j = agent.get_pos()
+  ni, nj = a_move[0], a_move[1]
+#  p_state = state
+
+### is previous state necesary? maybe for spikes but not saving the whole matrix
   # save state when move again spikes up!
   if state[ni,nj] == 's': # spikes
     state[ni,nj] == 'a'
 
   elif state[ni,nj] =='p':  # path
-    p_state = state
     state[ni,nj] = 'a'
     state[i,j] = 'p'
-
-  elif state[ni,nj] == 'w': # wall
-    p_state = state
-
-  # how to represent agent with or without keys!
-  elif state[ni,nj] =='K': # kdoors
-    pass
+    agent.move([ni,nj])
 
   elif state[ni,nj] == 'g': # goal
-    # iff all diamonds are collected!
-    if all_diamonds:
+    # TODO: change state iff all diamonds are collected!!!
+    state[ni,nj] == 'a'
+    state[i,j] = 'p'
+    agent.move([ni,nj])
+
+  elif state[ni,nj] =='K': # kdoors
+    if agent.has_key():
       state[ni,nj] == 'a'
     
   elif state[ni,nj] == 'k': # keys
-    pass
+    if agent.has_key():
+      state[ni,nj] == '@' # '@' agent over key with key
+    else:
+      state[ni,nj] == 'a'
 
-  elif state[ni,nj] == 'l': # lava
-    pass
   elif state[ni,nj] == 'd': # diamonds
-    pass
+### Should count collected diamonds?
+    state[ni,nj] == 'a'
+    state[i,j] = 'p'
+    agent.move([ni,nj])
+
   elif state[ni,nj] == 'b': # button
     pass
+
   elif state[ni,nj] == 'h': # holes
     pass
+
   elif state[ni,nj] == 'B': # bDoor
     pass
+
   elif state[ni,nj] == 'r': # rock
     pass
 
