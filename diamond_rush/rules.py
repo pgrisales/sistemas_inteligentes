@@ -32,15 +32,15 @@ def check_past(i, j, p_state, state):
 
   return state
 
-def check_rules(agent: Agent, a_move, p_state, state):
+def check_rules(agent: Agent, p_state, state):
   i, j = agent.get_pos()
-  ni, nj = a_move[0], a_move[1]
+  ni, nj = agent.play()
 #  p_state = state
 
 ### is previous state necesary? maybe for spikes but not saving the whole matrix
   # save state when move again spikes up!
   if state[ni,nj] == 's': # spikes
-    state[ni,nj] == 'a'
+    state[ni,nj] = 'a'
 
   elif state[ni,nj] =='p':  # path
     state[ni,nj] = 'a'
@@ -49,23 +49,23 @@ def check_rules(agent: Agent, a_move, p_state, state):
 
   elif state[ni,nj] == 'g': # goal
     # TODO: change state iff all diamonds are collected!!!
-    state[ni,nj] == 'a'
+    state[ni,nj] = 'a'
     state[i,j] = 'p'
     agent.move([ni,nj])
 
   elif state[ni,nj] =='K': # kdoors
     if agent.has_key():
-      state[ni,nj] == 'a'
+      state[ni,nj] = 'a'
     
   elif state[ni,nj] == 'k': # keys
     if agent.has_key():
-      state[ni,nj] == '@' # '@' agent over key with key
+      state[ni,nj] = '@' # '@' agent over key with key
     else:
-      state[ni,nj] == 'a'
+      state[ni,nj] = 'a'
 
   elif state[ni,nj] == 'd': # diamonds
 ### Should count collected diamonds?
-    state[ni,nj] == 'a'
+    state[ni,nj] = 'a'
     state[i,j] = 'p'
     agent.move([ni,nj])
 
@@ -80,5 +80,7 @@ def check_rules(agent: Agent, a_move, p_state, state):
 
   elif state[ni,nj] == 'r': # rock
     pass
+  else:
+    print('wall or lava')
 
   return p_state, state
