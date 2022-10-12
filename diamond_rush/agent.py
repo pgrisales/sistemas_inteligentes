@@ -5,19 +5,25 @@ class Agent:
     self.key = False
 
   def compute(self):
-    pass
-
-  def play(self):
     from random import randint
-    d = randint(0,3)
-    if d == 0:
+    i  = randint(0,3)
+    d = [0,1,2,3,4]
+    if d[i] == 0:
       return self.left()
-    elif d == 1:
+    elif d[i] == 1:
       return self.right()
-    elif d == 2:
+    elif d[i] == 2:
       return self.up()
-    elif d == 3:
+    elif d[i] == 3:
       return self.down()
+
+  def play(self, state):
+    i, j = self.compute()
+    while state[i, j] == 'w' or state[i, j] == 'l':
+      i, j = self.compute()
+    assert state[i,j] != 'w'
+    assert state[i,j] != 'l'
+    return i, j 
 
   def has_key(self):
     return self.key

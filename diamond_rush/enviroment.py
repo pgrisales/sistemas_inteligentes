@@ -29,7 +29,7 @@ class Level:
     return self.f_state
 
 # TODO: define structure for previous and new state
-  def new_state(self, agent: Agent, a_move):
+  def new_state(self, agent: Agent):
     self.p_state, self.state = check_rules(agent, self.p_state, self.state)
     return self.state
 
@@ -66,7 +66,7 @@ class Enviroment:
 #      level.new_state(agent, agent.play())
     i = 1
     while not np.array_equal(level.get_state(), level.get_f_state()):
-      print(level.new_state(agent, agent.play()))
+      print(level.new_state(agent))
       #print(level.get_state())
       
       print('##### ', agent.get_pos(), ' ####')

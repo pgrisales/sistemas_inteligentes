@@ -34,7 +34,7 @@ def check_past(i, j, p_state, state):
 
 def check_rules(agent: Agent, p_state, state):
   i, j = agent.get_pos()
-  ni, nj = agent.play()
+  ni, nj = agent.play(state)
 #  p_state = state
 
 ### is previous state necesary? maybe for spikes but not saving the whole matrix
@@ -81,6 +81,6 @@ def check_rules(agent: Agent, p_state, state):
   elif state[ni,nj] == 'r': # rock
     pass
   else:
-    print('wall or lava')
+    print('################## not smart #######################')
 
   return p_state, state
