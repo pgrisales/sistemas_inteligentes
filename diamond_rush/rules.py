@@ -19,6 +19,7 @@ from agent import Agent
 # agent over button
 # rock over button
 
+### TODO: check past for spikes up
 def check_past(i, j, p_state, state):
 
   if p_state == state:
