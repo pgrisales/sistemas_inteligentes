@@ -34,7 +34,10 @@ class Level:
     return self.state
 
   def load_level(self, level, a_pos): 
-    # TODO: concatenate level with txt file
+    #'./levels/1.png'
+    level = level.split('/')
+    level = level[2][:len(level[2])-4]
+
     state = np.loadtxt('./levels/default_init_states/0',dtype=str)
     f_state = np.loadtxt('./levels/final_states/0',dtype=str)
     if a_pos != self.agent_pos(state):
@@ -57,7 +60,8 @@ class Enviroment:
     pass
   def run(self):
     i = [5,2] # Default init pos level 0
-    level = Level(1,i)
+    tempL = './levels/1.png'
+    level = Level(tempL,i)
     agent = Agent(i)
 #    for i in range(3):
 #      print(level.get_state())
