@@ -1,5 +1,5 @@
-
 #!/usr/bin/python3
+
 class Node():
     """A node class for A* Pathfinding"""
 
@@ -15,7 +15,7 @@ class Node():
         return self.position == other.position
 
 
-def astar(maze, start, end):
+def as_tar(maze, start, end):
     """Returns a list of tuples as a path from the given start to the given end in the given maze"""
 
     # Create start and end node
@@ -57,7 +57,7 @@ def astar(maze, start, end):
 
         # Generate children
         children = []
-#        for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (-1, 1), (1, -1), (1, 1)]: # Adjacent squares
+
         for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0)]: # Adjacent squares
 
             # Get node position
@@ -115,8 +115,9 @@ def main():
     start = (0, 0)
     end = (7, 6)
 
-    path = astar(maze, start, end)
+    path = as_tar(maze, start, end)
     print(path)
+    print(end[1])
 
 
 if __name__ == '__main__':
