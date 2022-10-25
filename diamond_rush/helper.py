@@ -12,22 +12,18 @@ def move(key):
   kb.release(key)
   time.sleep(0.15)
   
-def play(d):
-  if d == 'l':
-    print('l')
-    move(Key.left)
-  elif d == 'r':
-    print('r')
-    move(Key.right)
-  elif d == 'u':
-    print('u')
-    move(Key.up)
-  elif d == 'd':
-    print('d')
-    move(Key.down)
+def play(moves):
+  for d in moves:
+    if d == 'l':
+      move(Key.left)
+    elif d == 'r':
+      move(Key.right)
+    elif d == 'u':
+      move(Key.up)
+    elif d == 'd':
+      move(Key.down)
 
 l0 = 'rrrrrdddlllllddrdrrrrd'
-for i in l0: 
-  play(i)
+play(l0)
 
 

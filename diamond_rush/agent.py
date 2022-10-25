@@ -49,9 +49,3 @@ class Agent:
 def setGoals():
   pass
 
-"""
-agent = Agent([1,1])
-print(agent.get_pos())
-agent.left()
-print(agent.get_pos())
-"""

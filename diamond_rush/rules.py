@@ -1,23 +1,30 @@
 #!/usr/bin/env python3
-from agent import Agent
+
+# 'p' path
+# 's'  spikes
 
 # 'a'  agent
-# 's'  spikes
-# 'K'  kdoors
-# 'g'  goal
-# 'k'  keys
-# 'l'  lava
-# 'w'  wall
-# 'd'  diamonds
-# 'b'  button
-# 'h'  holes
-# 'B'  bDoor
-# 'r'  rock
-# 'R' rock over spike
 # 'A' agent over spike
 # '@' agent over key with key
+# 'g'  goal
 # agent over button
-# rock over button
+
+# 'K'  kdoor
+# 'k'  key
+# 'l'  lava
+# 'w'  wall
+# 'd'  diamond
+# 'h'  hole
+
+# 'B'  bDoor
+# 'b'  button
+
+# 'r'  rock
+# 'R' rock over spike
+# 'o' rock over button
+# 'D' rock over diamond
+
+# Level 12 & 7 are the most complex
 
 ### TODO: check past for spikes up
 def check_past(i, j, p_state, state):
