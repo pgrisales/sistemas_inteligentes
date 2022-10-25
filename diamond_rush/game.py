@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
 
-class Level:
+from rules import check_rules
+
+class Game:
 ### TODO: should count variables like diamonds?
   def __init__(self, level, a_pos):
     self.level = level

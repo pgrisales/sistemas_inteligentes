@@ -6,8 +6,8 @@
 # 'a'  agent
 # 'A' agent over spike
 # '@' agent over key with key
+# '_'  agent over button
 # 'g'  goal
-# agent over button
 
 # 'K'  kdoor
 # 'k'  key
@@ -40,15 +40,44 @@ def check_past(i, j, p_state, state):
 
   return state
 
+# 'a' agent
+# 'A' agent over spike
+# '@' agent over key with key
+# '_' agent over button
+
+def agent():
+  pass
+
+def agent_over_button():
+  pass
+
+def agent_over_spike():
+  pass
+
+def agent_over_kk():
+  pass
+
 def check_rules(agent: Agent, p_state, state):
   i, j = agent.get_pos()
   ni, nj = agent.play(state)
-#  p_state = state
+
+  if state[i, j] == 'a':
+    agent(state, (i, j), (ni, nj))
+  elif state[i, j] == 'A':
+    agent_over_spike(state, (i, j), (ni, nj))
+  elif state[i, j] == '@':
+    agent(state, (i, j), (ni, nj))
+  elif state[i, j] == '_':
+    agent_over_button(state, (i, j), (ni, nj))
+  else:
+    agent_over_kk(state, (i, j), (ni, nj))
+
 
 ### is previous state necesary? maybe for spikes but not saving the whole matrix
   # save state when move again spikes up!
   if state[ni,nj] == 's': # spikes
-    state[ni,nj] = 'a'
+    state[ni,nj] = 'A'
+    state[i, j] = 'p'
 
   elif state[ni,nj] =='p':  # path
     state[ni,nj] = 'a'
@@ -87,6 +116,7 @@ def check_rules(agent: Agent, p_state, state):
     pass
 
   elif state[ni,nj] == 'r': # rock
+  # check rock direction
     pass
   else:
     print('################## not smart #######################')

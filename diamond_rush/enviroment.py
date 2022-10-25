@@ -2,8 +2,8 @@
 import cv2 
 import numpy as np
 import os
-from rules import check_rules
 from agent import Agent
+from game import *
 
 ### manage interactions btw Level and Agent... and it captures image of enviroment, dk if rules goes here or in level
 class Enviroment:
