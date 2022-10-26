@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-from rules import check_rules
+from rules import rules
+
+# Levels with buttons: 8, 9, 11, 12, 13, 14, 15, 17, 18, 19
 
 class Game:
 ### TODO: should count variables like diamonds?
@@ -29,8 +31,8 @@ class Game:
     level = level.split('/')
     level = level[2][:len(level[2])-4]
 
-    state = np.loadtxt('./levels/default_init_states/' + level,dtype=str)
-    f_state = np.loadtxt('./levels/final_states/' + level,dtype=str)
+    state = np.loadtxt('./levels/default_init_states/' + level, dtype=str)
+    f_state = np.loadtxt('./levels/final_states/' + level, dtype=str)
 
     if a_pos != self.agent_pos(state):
       # TODO: update new state with agent new position

@@ -45,7 +45,10 @@ class Agent:
     return [self.agent_pos[0] - 1, self.agent_pos[1]] 
   def down(self):
     return [self.agent_pos[0] + 1, self.agent_pos[1]] 
-
-def setGoals():
-  pass
-
+"""
+a = Agent((1,1))
+print(a.get_pos())
+print(a.has_key())
+a.set_has_key(True)
+print(a.has_key())
+"""

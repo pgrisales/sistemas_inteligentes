@@ -26,99 +26,105 @@
 
 # Level 12 & 7 are the most complex
 
-### TODO: check past for spikes up
-def check_past(i, j, p_state, state):
-
-  if p_state == state:
-    return state
-
-  if p_state[i,j] == 's':
-    state[i,j] == 'w'
-
-  elif state[i,j] == 'R': # rock over spike
-    pass
-
-  return state
-
 # 'a' agent
 # 'A' agent over spike
 # '@' agent over key with key
 # '_' agent over button
 
-def agent():
-  pass
-
-def agent_over_button():
-  pass
-
-def agent_over_spike():
-  pass
-
-def agent_over_kk():
-  pass
-
-def check_rules(agent: Agent, p_state, state):
+def rules(agent: Agent, state):
   i, j = agent.get_pos()
   ni, nj = agent.play(state)
+  a_state = state[i, j]
+  wall = ['h', 'w', 'l']
 
-  if state[i, j] == 'a':
-    agent(state, (i, j), (ni, nj))
-  elif state[i, j] == 'A':
-    agent_over_spike(state, (i, j), (ni, nj))
-  elif state[i, j] == '@':
-    agent(state, (i, j), (ni, nj))
-  elif state[i, j] == '_':
-    agent_over_button(state, (i, j), (ni, nj))
-  else:
-    agent_over_kk(state, (i, j), (ni, nj))
+  if a_state == 'a':
+    state[i, j] = 'p'
+    
+  elif a_state == 'A':
+    state[i, j] = 'w'
 
-
-### is previous state necesary? maybe for spikes but not saving the whole matrix
-  # save state when move again spikes up!
-  if state[ni,nj] == 's': # spikes
-    state[ni,nj] = 'A'
+  elif a_state == '_':
     state[i, j] = 'p'
 
-  elif state[ni,nj] =='p':  # path
-    state[ni,nj] = 'a'
-    state[i,j] = 'p'
-    agent.move([ni,nj])
+  else:
+    state[i, j] = 'k'
 
-  elif state[ni,nj] == 'g': # goal
-    # TODO: change state iff all diamonds are collected!!!
-    state[ni,nj] = 'a'
-    state[i,j] = 'p'
-    agent.move([ni,nj])
+# Done
+  if state[ni,nj] == 's':       # spike
+    state[ni,nj] = 'A'
 
-  elif state[ni,nj] =='K': # kdoors
+# Done
+  elif state[ni,nj] == 'p':     # path
+    state[ni,nj] = 'a'
+
+# Done
+  elif state[ni,nj] == 'k':     # key
     if agent.has_key():
-      state[ni,nj] = 'a'
-    
-  elif state[ni,nj] == 'k': # keys
-    if agent.has_key():
-      state[ni,nj] = '@' # '@' agent over key with key
+      state[ni,nj] = '@' 
     else:
       state[ni,nj] = 'a'
+      agent.set_has_key(True)
 
-  elif state[ni,nj] == 'd': # diamonds
+# Done
+  elif state[ni,nj] in wall:     # hole, wall, lava
+    state[i, j] = a_state
+
+  elif state[ni,nj] == 'r':     # rock
+    nri, nrj = ni + (ni-i), nj + (nj-j)
+    w = ['w','r','K','B']
+
+    if state[nri, nrj] in w:
+      state[i, j] = a_state
+
+    elif state[nri, nrj] == 'l'
+      state[ni, nj] = 'a'
+
+    # define button -> doors
+    elif state[nri, nrj] == 'b'
+      state[ni, nj] = 'a'
+      state[nri, nrj] = 'o'
+
+    elif state[nri, nrj] == 's'
+      state[ni, nj] = 'a'
+      state[nri, nrj] = 'R'
+      
+    elif state[nri, nrj] == 'd'
+      state[ni, nj] = 'a'
+      state[nri, nrj] = 'R'
+
+  elif state[ni,nj] == 'R':     # rock over spike 
+    if agent.has_key():
+
+  elif state[ni,nj] == 'o':     # rock over button
+    if agent.has_key():
+
+  elif state[ni,nj] == 'D':     # rock over diamond
+    if agent.has_key():
+
+  elif state[ni,nj] == 'd':     # diamond
 ### Should count collected diamonds?
     state[ni,nj] = 'a'
     state[i,j] = 'p'
     agent.move([ni,nj])
 
-  elif state[ni,nj] == 'b': # button
+  elif state[ni,nj] == 'g':     # goal
+    # TODO: change state iff all diamonds are collected!!!
+    state[ni,nj] = 'a'
+    state[i,j] = 'p'
+    agent.move([ni,nj])
+
+  elif state[ni,nj] == 'K':     # kdoor
+    if agent.has_key():
+      state[ni,nj] = 'a'
+
+  elif state[ni,nj] == 'b':     # button
     pass
 
-  elif state[ni,nj] == 'h': # holes
+  elif state[ni,nj] == 'B':     # bDoor
     pass
 
-  elif state[ni,nj] == 'B': # bDoor
-    pass
-
-  elif state[ni,nj] == 'r': # rock
-  # check rock direction
-    pass
   else:
-    print('################## not smart #######################')
+    print('##################### not smart #######################')
 
-  return p_state, state
+  return state
+
