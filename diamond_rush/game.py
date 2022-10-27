@@ -1,29 +1,20 @@
 #!/usr/bin/env python3
 
-from rules import rules
+#from rules import rules
+import numpy as np
 
 # Levels with buttons: 8, 9, 11, 12, 13, 14, 15, 17, 18, 19
-
 class Game:
-### TODO: should count variables like diamonds?
   def __init__(self, level, a_pos):
     self.level = level
-    # default init agent pos 
     self.a_pos = a_pos
     self.state, self.f_state = self.load_level(self.level, self.a_pos)
-    self.p_state = self.state
-    # remeber previous state
-#    self.p_state = self.state
+    self.diamonds = diamonds_pos(self.state)
+    self.g_pos = goal_pos(self.state)
+    self.finish = False
 
-  def get_state(self):
-    return self.state
-
-  def get_f_state(self):
-    return self.f_state
-
-# TODO: define structure for previous and new state
   def new_state(self, agent: Agent):
-    self.p_state, self.state = check_rules(agent, self.p_state, self.state)
+    self.state = rules(agent, self.state)
     return self.state
 
   def load_level(self, level, a_pos): 
@@ -41,6 +32,12 @@ class Game:
 
     return state, f_state
 
+  def goal_pos(self, state):
+    for i in range(len(state)):
+      for j in range(len(state[0])):
+        if state[i,j] == 'g':
+          return (i, j)
+
   def diamonds_pos(self, state):
     pos = []
     for i in range(len(state)):
@@ -54,3 +51,16 @@ class Game:
       for j in range(len(state[0])):
         if state[i,j] == 'a' or state[i,j] == 'A' or state[i,j] == '@':
           return i,j
+
+"""
+state = np.loadtxt('./levels/default_init_states/11', dtype=str)
+for i in range(len(state)):
+  for j in range(len(state[0])):
+    if state[i,j] == 'b':
+      print('button:', i, j)
+
+for i in range(len(state)):
+  for j in range(len(state[0])):
+    if state[i,j] == 'B':
+      print('door:', i, j)
+"""

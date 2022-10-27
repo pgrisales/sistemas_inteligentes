@@ -23,7 +23,9 @@ def play(moves):
     elif d == 'd':
       move(Key.down)
 
-l0 = 'rrrrrdddlllllddrdrrrrd'
-play(l0)
+#l0 = 'rrrrrdddlllllddrdrrrrd'
+
+l11 = 'ulrrdllddrdrrurddrruudddduullrlullllddddrrrrlrllllddrrrruuurrurldlldddrrrllluuuurdruuuuddlldddrlddrruuuuuuuuulll'
+play(l11)
 
 

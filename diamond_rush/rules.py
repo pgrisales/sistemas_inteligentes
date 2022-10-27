@@ -31,11 +31,18 @@
 # '@' agent over key with key
 # '_' agent over button
 
-def rules(agent: Agent, state):
-  i, j = agent.get_pos()
+def rules(agent: Agent, game: Game):
+  state = game.state
+  i, j = agent.pos
   ni, nj = agent.play(state)
   a_state = state[i, j]
   wall = ['h', 'w', 'l']
+
+  b = []
+  B = []
+  if game.level = 11
+    b = [(12,5)]
+    B = [(8,2)]
 
   if a_state == 'a':
     state[i, j] = 'p'
@@ -44,7 +51,7 @@ def rules(agent: Agent, state):
     state[i, j] = 'w'
 
   elif a_state == '_':
-    state[i, j] = 'p'
+    state[i, j] = 'b'
 
   else:
     state[i, j] = 'k'
@@ -59,16 +66,39 @@ def rules(agent: Agent, state):
 
 # Done
   elif state[ni,nj] == 'k':     # key
-    if agent.has_key():
+    if agent.has_key:
       state[ni,nj] = '@' 
     else:
       state[ni,nj] = 'a'
-      agent.set_has_key(True)
+      agent.has_key = True
 
 # Done
   elif state[ni,nj] in wall:     # hole, wall, lava
     state[i, j] = a_state
 
+# Done
+  elif state[ni,nj] == 'd':     # diamond
+    state[ni,nj] = 'a'
+    agent.pos = (ni, nj)
+    game.diamonds.remove((ni, nj))
+
+# Done
+  elif state[ni,nj] == 'g':     # goal
+    if len(game.diamonds) == 0:
+      state[ni,nj] = 'a'
+      agent.pos = (ni, nj)
+      game.finish = True
+    else:
+      state[i, j] = a_state 
+
+# Done
+  elif state[ni,nj] == 'K':     # kdoor
+    if agent.has_key:
+      state[ni,nj] = 'a'
+    else:
+      state[i, j] = a_state
+
+# Done
   elif state[ni,nj] == 'r':     # rock
     nri, nrj = ni + (ni-i), nj + (nj-j)
     w = ['w','r','K','B']
@@ -76,52 +106,116 @@ def rules(agent: Agent, state):
     if state[nri, nrj] in w:
       state[i, j] = a_state
 
-    elif state[nri, nrj] == 'l'
+    elif state[nri, nrj] == 'l':
       state[ni, nj] = 'a'
 
-    # define button -> doors
-    elif state[nri, nrj] == 'b'
+    elif state[nri, nrj] == 'b':
       state[ni, nj] = 'a'
+      idx = b.index((nri, nrj))
+      state[B[idx]] = 'p'
       state[nri, nrj] = 'o'
 
-    elif state[nri, nrj] == 's'
+    elif state[nri, nrj] == 's':
       state[ni, nj] = 'a'
       state[nri, nrj] = 'R'
       
-    elif state[nri, nrj] == 'd'
+    elif state[nri, nrj] == 'd':
       state[ni, nj] = 'a'
       state[nri, nrj] = 'R'
 
+# Done
   elif state[ni,nj] == 'R':     # rock over spike 
-    if agent.has_key():
+    nri, nrj = ni + (ni-i), nj + (nj-j)
+    w = ['w','r','K','B']
 
+    if state[nri, nrj] in w:
+      state[i, j] = a_state
+
+    elif state[nri, nrj] == 'l':
+      state[ni, nj] = 'a'
+
+    elif state[nri, nrj] == 'b':
+      state[ni, nj] = 'a'
+      idx = b.index((nri, nrj))
+      state[B[idx]] = 'p'
+      state[nri, nrj] = 'o'
+
+    elif state[nri, nrj] == 's':
+      state[ni, nj] = 'a'
+      state[nri, nrj] = 'R'
+      
+    elif state[nri, nrj] == 'd':
+      state[ni, nj] = 'a'
+      state[nri, nrj] = 'R'
+
+# Done
   elif state[ni,nj] == 'o':     # rock over button
-    if agent.has_key():
+    nri, nrj = ni + (ni-i), nj + (nj-j)
+    w = ['w','r','K','B']
 
+    if state[nri, nrj] in w:
+      state[i, j] = a_state
+
+    elif state[nri, nrj] == 'l':
+      state[ni, nj] = 'a'
+
+    elif state[nri, nrj] == 'b':
+      state[ni, nj] = 'a'
+      idx = b.index((nri, nrj))
+      state[B[idx]] = 'p'
+      state[nri, nrj] = 'o'
+
+    elif state[nri, nrj] == 's':
+      state[ni, nj] = 'a'
+      state[nri, nrj] = 'R'
+      
+    elif state[nri, nrj] == 'd':
+      state[ni, nj] = 'a'
+      state[nri, nrj] = 'R'
+
+# Done
   elif state[ni,nj] == 'D':     # rock over diamond
-    if agent.has_key():
+    nri, nrj = ni + (ni-i), nj + (nj-j)
+    w = ['w','r','K','B']
 
-  elif state[ni,nj] == 'd':     # diamond
-### Should count collected diamonds?
-    state[ni,nj] = 'a'
-    state[i,j] = 'p'
-    agent.move([ni,nj])
+    if state[nri, nrj] in w:
+      state[i, j] = a_state
 
-  elif state[ni,nj] == 'g':     # goal
-    # TODO: change state iff all diamonds are collected!!!
-    state[ni,nj] = 'a'
-    state[i,j] = 'p'
-    agent.move([ni,nj])
+    elif state[nri, nrj] == 'l':
+      state[ni, nj] = 'a'
+      game.diamonds.remove((ni, nj))
 
-  elif state[ni,nj] == 'K':     # kdoor
-    if agent.has_key():
-      state[ni,nj] = 'a'
+    elif state[nri, nrj] == 'b':
+      state[ni, nj] = 'a'
+      game.diamonds.remove((ni, nj))
+      idx = b.index((nri, nrj))
+      state[B[idx]] = 'p'
+      state[nri, nrj] = 'o'
 
+    elif state[nri, nrj] == 's':
+      state[ni, nj] = 'a'
+      game.diamonds.remove((ni, nj))
+      state[nri, nrj] = 'R'
+      
+    elif state[nri, nrj] == 'd':
+      state[ni, nj] = 'a'
+      game.diamonds.remove((ni, nj))
+      state[nri, nrj] = 'R'
+
+# Done
   elif state[ni,nj] == 'b':     # button
-    pass
+    state[ni, nj] = '_'
+    idx = b.index((ni, nj))
+    state[B[idx]] = 'p'
 
+# Done
   elif state[ni,nj] == 'B':     # bDoor
-    pass
+    idx = B.index((ni, nj))
+    bi, bj = b[idx]
+    if state[bi ,bj] != 'b':
+      state[ni, nj] = 'a'
+    else:
+      state[i, j] = a_state
 
   else:
     print('##################### not smart #######################')

@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
+import numpy as np
+
 class Agent:
   def __init__(self, agent_pos):
-    self.agent_pos = agent_pos 
-    self.key = False
+    self.pos = agent_pos 
+    self.has_key = False
 
   def compute(self):
     from random import randint
     i  = randint(0,3)
-    d = [0,1,2,3,4]
-    if d[i] == 0:
+    d = ['l', 'r', 'u', 'd']
+    if d[i] == 'l':
       return self.left()
-    elif d[i] == 1:
+    elif d[i] == 'r':
       return self.right()
-    elif d[i] == 2:
+    elif d[i] == 'u':
       return self.up()
-    elif d[i] == 3:
+    elif d[i] == 'd':
       return self.down()
 
   def play(self, state):
@@ -25,30 +27,31 @@ class Agent:
     assert state[i,j] != 'l'
     return i, j 
 
-  def has_key(self):
-    return self.key
-
-  def set_has_key(self, key):
-    self.key = key 
-
-  def get_pos(self):
-    return self.agent_pos
-
-  def move(self, new_pos): 
-    self.agent_pos = new_pos
-
   def left(self):
-    return [self.agent_pos[0], self.agent_pos[1] - 1] 
+    return [self.pos[0], self.pos[1] - 1] 
   def right(self):
-    return [self.agent_pos[0], self.agent_pos[1] + 1] 
+    return [self.pos[0], self.pos[1] + 1] 
   def up(self):
-    return [self.agent_pos[0] - 1, self.agent_pos[1]] 
+    return [self.pos[0] - 1, self.pos[1]] 
   def down(self):
-    return [self.agent_pos[0] + 1, self.agent_pos[1]] 
+    return [self.pos[0] + 1, self.pos[1]] 
+
+
 """
+#l0 = 'rrrrrdddlllllddrdrrrrd'
+l11 = 'ulrrdllddrdrrurddrruudddduullrlullllddddrrrrlrllllddrrrruuurrurldlldddrrrllluuuurdruuuuddlldddrlddrruuuuuuuuulll'
 a = Agent((1,1))
-print(a.get_pos())
-print(a.has_key())
-a.set_has_key(True)
-print(a.has_key())
+print(a.has_key)
+a.has_key = True
+print(a.has_key)
+l11 = [((12,5),(8,2))]
+b = [(12,5),(1,1),(1,3)]
+B = [(8,2),(2,2),(3,3)]
+idx = b.index((12,5))
+
+state = np.loadtxt('./levels/default_init_states/11', dtype=str)
+
+print(state[B[idx]])
+print(state[8, 2])
+#print(b.index((1,1)))
 """
