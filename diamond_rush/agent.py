@@ -5,7 +5,25 @@ class Agent:
   def __init__(self, agent_pos):
     self.pos = agent_pos 
     self.has_key = False
+    self.count = 0
+    self.l0 = 'rrrrrdddlllllddrdrrrrd'
+    self.l10 = 'ulrrdllddrdrrurddrruudddduullrlullllddddrrrrlrllllddrrrruuurrurldlldddrrrllluuuurdruuuuddlldddrlddrruuuuuuuuulll'
+    self.l11 = 'lrrrdrrudrddddddduulrddlruullddrdllluuullldddrrruuulluuulrurrdrrrrdddddd'
 
+  def testRules(self):
+    if self.l11[self.count] == 'l':
+      self.count += 1
+      return self.left()
+    elif self.l11[self.count] == 'r':
+      self.count += 1
+      return self.right()
+    elif self.l11[self.count] == 'u':
+      self.count += 1
+      return self.up()
+    elif self.l11[self.count] == 'd':
+      self.count += 1
+      return self.down()
+    
   def compute(self):
     from random import randint
     i  = randint(0,3)
@@ -20,7 +38,7 @@ class Agent:
       return self.down()
 
   def play(self, state):
-    i, j = self.compute()
+    #i, j = self.compute()
     while state[i, j] == 'w' or state[i, j] == 'l':
       i, j = self.compute()
     assert state[i,j] != 'w'
@@ -36,22 +54,3 @@ class Agent:
   def down(self):
     return [self.pos[0] + 1, self.pos[1]] 
 
-
-"""
-#l0 = 'rrrrrdddlllllddrdrrrrd'
-l11 = 'ulrrdllddrdrrurddrruudddduullrlullllddddrrrrlrllllddrrrruuurrurldlldddrrrllluuuurdruuuuddlldddrlddrruuuuuuuuulll'
-a = Agent((1,1))
-print(a.has_key)
-a.has_key = True
-print(a.has_key)
-l11 = [((12,5),(8,2))]
-b = [(12,5),(1,1),(1,3)]
-B = [(8,2),(2,2),(3,3)]
-idx = b.index((12,5))
-
-state = np.loadtxt('./levels/default_init_states/11', dtype=str)
-
-print(state[B[idx]])
-print(state[8, 2])
-#print(b.index((1,1)))
-"""

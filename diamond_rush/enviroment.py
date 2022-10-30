@@ -1,25 +1,28 @@
 #!/usr/bin/env python3
-import cv2 
-import numpy as np
-import os
 from agent import Agent
-from game import *
+from game import Game
+from rules import rules
+
+def run(agent: Agent, game: Game):
+  game.state = rules(agent, game)
+  return game.state
 
 class Enviroment:
-  def __init__(self):
-    pass
+
   def run(self):
-    i = [5,2]
-    tempL = './levels/1.png'
-    level = Level(tempL,i)
+    #i = [5,2]
+    i = [3, 3]
+    tempL = './levels/11.png'
     agent = Agent(i)
+    game = Game(tempL, i)
+#    print(game.state)
     i = 1
-    while not np.array_equal(level.get_state(), level.get_f_state()):
-      print(level.new_state(agent))
-      
-      print('##### ', agent.get_pos(), ' ####')
+    while not game.finish:
+      print(run(agent, game))
+      print('##### ', len(game.diamonds) , ' ####')
+      print('##### ', agent.pos , ' ####')
       print('##### ', i, ' ####')
       i += 1
 
-#env = Enviroment()
-#env.run()
+env = Enviroment()
+env.run()

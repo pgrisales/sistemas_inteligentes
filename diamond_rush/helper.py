@@ -25,7 +25,8 @@ def play(moves):
 
 #l0 = 'rrrrrdddlllllddrdrrrrd'
 
-l11 = 'ulrrdllddrdrrurddrruudddduullrlullllddddrrrrlrllllddrrrruuurrurldlldddrrrllluuuurdruuuuddlldddrlddrruuuuuuuuulll'
+l10 = 'ulrrdllddrdrrurddrruudddduullrlullllddddrrrrlrllllddrrrruuurrurldlldddrrrllluuuurdruuuuddlldddrlddrruuuuuuuuulll'
+l11 = 'lrrrdrrudrddddddduulrddlruullddrdllluuullldddrrruuulluuulrurrdrrrrdddddd'
 play(l11)
 
 

@@ -2,26 +2,19 @@
 
 #from rules import rules
 import numpy as np
+from agent import Agent
 
 # Levels with buttons: 8, 9, 11, 12, 13, 14, 15, 17, 18, 19
 class Game:
   def __init__(self, level, a_pos):
-    self.level = level
+    self.level = self.parseLevel(level) 
     self.a_pos = a_pos
     self.state, self.f_state = self.load_level(self.level, self.a_pos)
-    self.diamonds = diamonds_pos(self.state)
-    self.g_pos = goal_pos(self.state)
+    self.diamonds = self.diamonds_pos(self.state)
+    self.g_pos = self.goal_pos(self.state)
     self.finish = False
 
-  def new_state(self, agent: Agent):
-    self.state = rules(agent, self.state)
-    return self.state
-
   def load_level(self, level, a_pos): 
-    #'./levels/1.png'
-    level = level.split('/')
-    level = level[2][:len(level[2])-4]
-
     state = np.loadtxt('./levels/default_init_states/' + level, dtype=str)
     f_state = np.loadtxt('./levels/final_states/' + level, dtype=str)
 
@@ -31,6 +24,11 @@ class Game:
       return new_state, f_state
 
     return state, f_state
+
+  def parseLevel(self, level):
+    level = level.split('/')
+    level = level[2][:len(level[2])-4]
+    return level
 
   def goal_pos(self, state):
     for i in range(len(state)):
