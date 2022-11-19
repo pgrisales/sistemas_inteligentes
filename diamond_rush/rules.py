@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 # 'p' path
 # 's'  spikes
 
@@ -26,25 +24,40 @@
 # 'Q' rock over key 
 # TODO: rock over key!!
 
-# Level 12 & 7 are the most complex
-
 # 'a' agent
 # 'A' agent over spike
 # '@' agent over key with key
 # '_' agent over button
-from game import Game
-from agent import Agent
 
-def rules(agent:Agent, game:Game):
+# Level 14, 12 & 7 are the most complex
+
+# TODO: replace all key-agent interactions with this function
+def key_actions(agent):
+  if agent.has_key:
+    agent.pos = (ni, nj)
+    return '@' 
+  else:
+    agent.has_key = True
+    agent.pos = (ni, nj)
+    return 'a'
+
+# rules(state, diamonds, finish, a_pos, key)
+def rules(agent, a_move, game):
   state = game.state
   i, j = agent.pos
-  ni, nj = agent.testRules()
+#  ni, nj = agent.testRules()
+  ni, nj = a_move
   a_state = state[i, j]
+
   wall = ['h', 'w', 'l']
+
+  # Define wall for rock
+  W = ['w', 'r', 'K', 'B', 'g']
 
   b = []
   B = []
-  if game.level == '11':
+
+  if game.level == 11:
     b = [(12, 5)]
     B = [(8, 2)]
 
@@ -107,13 +120,11 @@ def rules(agent:Agent, game:Game):
     else:
       state[i, j] = a_state
 
-# TODO: rock-key case
 # Done
   elif state[ni,nj] == 'r':     # rock
     nri, nrj = ni + (ni-i), nj + (nj-j)
-    w = ['w', 'r', 'K', 'B', 'g']
 
-    if state[nri, nrj] in w:
+    if state[nri, nrj] in W:
       state[i, j] = a_state
 
     elif state[nri, nrj] == 'l':
@@ -136,24 +147,105 @@ def rules(agent:Agent, game:Game):
       state[ni, nj] = 'a'
       agent.pos = (ni, nj)
       state[nri, nrj] = 'R'
+
+    elif state[nri, nrj] == 'k': 
+      state[ni, nj] = 'a'
+      agent.pos = (ni, nj)
+      state[nri, nrj] = 'Q'
       
     elif state[nri, nrj] == 'd':
       state[ni, nj] = 'a'
       agent.pos = (ni, nj)
       state[nri, nrj] = 'D'
 
-# TODO: key case
     else:
       state[ni, nj] = 'a'
       agent.pos = (ni, nj)
       state[nri, nrj] = 'r'
 
+# Done I think!
+  elif state[ni,nj] == 'Q':     # rock over key
+    nri, nrj = ni + (ni-i), nj + (nj-j)
+
+    if state[nri, nrj] in W:
+      state[i, j] = a_state
+
+    elif state[nri, nrj] == 'l':
+      if agent.has_key:
+        state[ni,nj] = '@' 
+        agent.pos = (ni, nj)
+      else:
+        state[ni,nj] = 'a'
+        agent.has_key = True
+        agent.pos = (ni, nj)
+
+    elif state[nri, nrj] == 'h':
+      if agent.has_key:
+        state[ni,nj] = '@' 
+        agent.pos = (ni, nj)
+      else:
+        state[ni,nj] = 'a'
+        agent.has_key = True
+        agent.pos = (ni, nj)
+      state[nri, nrj] = 'p'
+
+    elif state[nri, nrj] == 'b':
+      if agent.has_key:
+        state[ni,nj] = '@' 
+        agent.pos = (ni, nj)
+      else:
+        state[ni,nj] = 'a'
+        agent.has_key = True
+        agent.pos = (ni, nj)
+      idx = b.index((nri, nrj))
+      state[B[idx]] = 'p'
+      state[nri, nrj] = 'o'
+
+    elif state[nri, nrj] == 's':
+      if agent.has_key:
+        state[ni,nj] = '@' 
+        agent.pos = (ni, nj)
+      else:
+        state[ni,nj] = 'a'
+        agent.has_key = True
+        agent.pos = (ni, nj)
+      state[nri, nrj] = 'R'
+
+    elif state[nri, nrj] == 'k': 
+      if agent.has_key:
+        state[ni,nj] = '@' 
+        agent.pos = (ni, nj)
+      else:
+        state[ni,nj] = 'a'
+        agent.has_key = True
+        agent.pos = (ni, nj)
+      state[nri, nrj] = 'Q'
+      
+    elif state[nri, nrj] == 'd':
+      if agent.has_key:
+        state[ni,nj] = '@' 
+        agent.pos = (ni, nj)
+      else:
+        state[ni,nj] = 'a'
+        agent.has_key = True
+        agent.pos = (ni, nj)
+      state[nri, nrj] = 'D'
+
+    else:
+      if agent.has_key:
+        state[ni,nj] = '@' 
+        agent.pos = (ni, nj)
+      else:
+        state[ni,nj] = 'a'
+        agent.has_key = True
+        agent.pos = (ni, nj)
+      state[nri, nrj] = 'r'
+
 # Done
   elif state[ni,nj] == 'R':     # rock over spike 
     nri, nrj = ni + (ni-i), nj + (nj-j)
-    w = ['w', 'r', 'K', 'B', 'g']
 
-    if state[nri, nrj] in w:
+    if state[nri, nrj] in W:
       state[i, j] = a_state
 
     elif state[nri, nrj] == 'l':
@@ -181,6 +273,11 @@ def rules(agent:Agent, game:Game):
       state[ni, nj] = 'A'
       agent.pos = (ni, nj)
       state[nri, nrj] = 'D'
+
+    elif state[nri, nrj] == 'k': 
+      state[ni, nj] = 'A'
+      agent.pos = (ni, nj)
+      state[nri, nrj] = 'Q'
 
     else:
       state[ni, nj] = 'a'
@@ -190,9 +287,8 @@ def rules(agent:Agent, game:Game):
 # Done
   elif state[ni,nj] == 'o':     # rock over button
     nri, nrj = ni + (ni-i), nj + (nj-j)
-    w = ['w', 'r', 'K', 'B', 'g']
 
-    if state[nri, nrj] in w:
+    if state[nri, nrj] in W:
       state[i, j] = a_state
 
     elif state[nri, nrj] == 'l':
@@ -223,6 +319,11 @@ def rules(agent:Agent, game:Game):
       agent.pos = (ni, nj)
       state[nri, nrj] = 'D'
 
+    elif state[nri, nrj] == 'k': 
+      state[ni, nj] = '_'
+      agent.pos = (ni, nj)
+      state[nri, nrj] = 'Q'
+
     else:
       state[ni, nj] = 'a'
       agent.pos = (ni, nj)
@@ -231,9 +332,8 @@ def rules(agent:Agent, game:Game):
 # Done
   elif state[ni,nj] == 'D':     # rock over diamond
     nri, nrj = ni + (ni-i), nj + (nj-j)
-    w = ['w', 'r', 'K', 'B', 'g']
 
-    if state[nri, nrj] in w:
+    if state[nri, nrj] in W:
       state[i, j] = a_state
 
     elif state[nri, nrj] == 'l':
@@ -267,6 +367,12 @@ def rules(agent:Agent, game:Game):
       game.diamonds.remove((ni, nj))
       state[nri, nrj] = 'D'
 
+    elif state[nri, nrj] == 'k': 
+      state[ni, nj] = 'a'
+      agent.pos = (ni, nj)
+      game.diamonds.remove((ni, nj))
+      state[nri, nrj] = 'Q'
+
     else:
       state[ni, nj] = 'a'
       agent.pos = (ni, nj)
@@ -291,7 +397,10 @@ def rules(agent:Agent, game:Game):
       state[i, j] = a_state
 
   else:
-    print('##################### not smart #######################')
+    print(state)
+    print(i, j)
+    print(state[i,j])
+    print('##################### rules not working #######################')
 
   return state
 

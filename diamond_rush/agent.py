@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-import numpy as np
-
 class Agent:
   def __init__(self, agent_pos):
     self.pos = agent_pos 
@@ -9,6 +6,10 @@ class Agent:
     self.l0 = 'rrrrrdddlllllddrdrrrrd'
     self.l10 = 'ulrrdllddrdrrurddrruudddduullrlullllddddrrrrlrllllddrrrruuurrurldlldddrrrllluuuurdruuuuddlldddrlddrruuuuuuuuulll'
     self.l11 = 'lrrrdrrudrddddddduulrddlruullddrdllluuullldddrrruuulluuulrurrdrrrrdddddd'
+    self.actions = { 'l': self.left, 'r': self.right, 'u': self.up, 'd': self.down }
+  
+  def die(self):
+    pass
 
   def testRules(self):
     if self.l11[self.count] == 'l':

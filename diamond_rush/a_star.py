@@ -1,19 +1,38 @@
-#!/usr/bin/python3
-from enviroment import s, fs
+#!/usr/bin/env python3
+import numpy as np
+
+# How to optimize with this 
+from heapq import heappush, heappop
+
+# Diamond heuristic
+def h_d(src, goal):
+  pass
+
+# Sokoban type heuristic
+def h_r(src, goal):
+  pass
+  
+# Manhattan heuristic
+def h(src, goal):
+  return abs(src.pos[0] - goal.pos[0]) +  abs(src.pos[1] - goal.pos[1])  
 
 class Node():
-    def __init__(self, parent=None, position=None):
-        self.parent = parent
-        self.position = position
 
-        self.g = 0
-        self.h = 0
-        self.f = 0
+  def __init__(self, parent=None, pos=None):
+    self.parent = parent
+    self.pos = pos
 
-    def __eq__(self, other):
-        return self.position == other.position
+    self.g = 0
+    self.h = 0
+    self.f = 0
 
-def as_tar(maze, start, end):
+  def __eq__(self, other):
+    return self.pos == other.pos
+
+def a_star(game, agent, end):
+
+  start = agent.pos
+  print(agent.pos)
   # Create start and end node
   start_node = Node(None, start)
   start_node.g = start_node.h = start_node.f = 0
@@ -26,17 +45,13 @@ def as_tar(maze, start, end):
 
   # Add the start node
   open_list.append(start_node)
-  count = 1
+
   # Loop until you find the end
   while len(open_list) > 0:
-    print('count: ', count)
-    count += 1
 
     # Get the current node
     current_node = open_list[0]
     current_index = 0
-
-
     for index, item in enumerate(open_list):
       if item.f < current_node.f:
         current_node = item
@@ -51,59 +66,37 @@ def as_tar(maze, start, end):
       path = []
       current = current_node
       while current is not None:
-        path.append(current.position)
+#        print('current node: ', current.pos)
+        path.append(current.pos)
         current = current.parent
       return path[::-1] # Return reversed path
 
     # Generate children
     children = []
-    #print('current node pos: ', current_node.position)
-    for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0)]: # Adjacent squares
 
-
-      # Get node position
-      node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
-
-      print('Current')
-      temp = maze
-      temp[node_position[0]][node_position[1]] = 88
-      print(temp)
-      print()
-
-      # Make sure within range
-      if node_position[0] > (len(maze) - 1) or node_position[0] < 0 or node_position[1] > (len(maze[len(maze)-1]) -1) or node_position[1] < 0:
-        continue
-
-      # Make sure walkable terrain
-     # if maze[node_position[0]][node_position[1]] != 'w' or maze[node_position[0]][node_position[1]] != 'l':
-     #   print('is walkable')
-     #   continue
-
-      # Make sure walkable terrain
-      if maze[node_position[0]][node_position[1]] != 0:
-        #print('is walkable')
-        continue
-
-      #print(new_position)
-
-      # Create new node
-      new_node = Node(current_node, node_position)
-
-      # Append
+    agent.pos = current_node.pos
+    print(agent.pos)
+#    print(game.state)
+    # Possible actions
+    new_pos = game.possible_actions(agent, game)
+    for k, v in new_pos.items():
+#      print('childs: ', v())
+      new_node = Node(current_node, v())
       children.append(new_node)
 
     # Loop through children
     for child in children:
-      #print('child', child.position)
 
       # Child is on the closed list
       for closed_child in closed_list:
         if child == closed_child:
           continue
+#            print('current node: ', current_node.pos)
 
       # Create the f, g, and h values
       child.g = current_node.g + 1
-      child.h = ((child.position[0] - end_node.position[0]) ** 2) + ((child.position[1] - end_node.position[1]) ** 2)
+      child.h = h(child, end_node)
+      print(child.pos, child.h)
       child.f = child.g + child.h
 
       # Child is already in the open list
@@ -114,40 +107,3 @@ def as_tar(maze, start, end):
       # Add the child to the open list
       open_list.append(child)
 
-def main():
-
-    maze = [[0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]]
-
-  # worst case
-    maze2 = [[0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]]
-
-    #start = (5, 2)
-    start = (0,0)
-    end = (6,7)
-    #end = (12,7)
-
-    path = as_tar(maze2, start, end)
-    #path = as_tar(s, start, end)
-    print(path)
-    print()
-
-if __name__ == '__main__':
-    main()
