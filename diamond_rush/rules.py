@@ -32,6 +32,44 @@
 # Level 14, 12 & 7 are the most complex
 
 # TODO: replace all key-agent interactions with this function
+import copy
+
+def left(pos):
+  return [pos[0], pos[1] - 1] 
+def right(pos):
+  return [pos[0], pos[1] + 1] 
+def up(pos):
+  return [pos[0] - 1, pos[1]] 
+def down(pos):
+  return [pos[0] + 1, pos[1]] 
+
+def possible_actions(g_state, g_level, g_goal, g_diamonds, g_finish, pos, a_key):
+  l = left(pos)
+  r = right(pos)
+  u = up(pos)
+  d = down(pos)
+
+  actions = { 'l': l, 'r': r, 'u': u, 'd': d }
+  moves = { 'l': l, 'r': r, 'u': u, 'd': d }
+  for kd, v in actions.items():
+    a_pos = copy.deepcopy(pos)
+    key =  copy.deepcopy(a_key)
+    state = copy.deepcopy(g_state)
+    diamonds = copy.deepcopy(g_diamonds)
+    finish = copy.deepcopy(g_finish)
+    level = copy.deepcopy(g_level)
+    goal = copy.deepcopy(g_goal)
+
+  #return state, diamonds, finish, moved, (ni, nj), key
+    s, d, f, moved, n_pos, k = rules(state, level, goal, diamonds, finish, pos,  v, key)
+    moves[kd] = [s, actions[kd]]
+#      print('pos after: ', a2.pos)
+    if not moved:
+      del moves[kd]
+#        print('MOVE DEL: ', k)#, actions[k]())
+#        print(moves[k])
+  return moves 
+
 def key_actions(agent):
   if agent.has_key:
     moved = True
@@ -41,7 +79,8 @@ def key_actions(agent):
     moved = True
     return 'a'
 
-def rules(state, level, diamonds, finish, a_pos, a_move, key):
+def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
+
   moved = False
   state = state
   i, j = a_pos
@@ -106,6 +145,8 @@ def rules(state, level, diamonds, finish, a_pos, a_move, key):
     diamonds.remove((ni, nj))
 
 # Done
+# TODO: quitar todo lo relacionado a goal, no se usa
+#  elif ni == goal[0] and nj == goal[1]:     # goal
   elif state[ni,nj] == 'g':     # goal
     if len(diamonds) == 0:
       state[ni,nj] = 'a'

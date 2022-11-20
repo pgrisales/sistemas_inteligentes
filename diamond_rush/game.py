@@ -1,7 +1,5 @@
 import numpy as np
-import copy
 from agent import Agent
-from rules import rules
 
 # Levels with buttons: 8, 9, 11, 12, 13, 14, 15, 17, 18, 19
 class Game:
@@ -10,7 +8,7 @@ class Game:
     self.a_pos = a_pos
     self.state = self.load_level(self.level, self.a_pos)
     self.diamonds = self.diamonds_pos(self.state)
-    self.g_pos = self.goal_pos(self.state)
+    self.g_pos = self.goal_pos()
     self.finish = False
 
   def load_level(self, level, a_pos): 
@@ -24,10 +22,10 @@ class Game:
 
     return state
 
-  def goal_pos(self, state):
-    for i in range(len(state)):
-      for j in range(len(state[0])):
-        if state[i,j] == 'g':
+  def goal_pos(self):
+    for i in range(len(self.state)):
+      for j in range(len(self.state[0])):
+        if self.state[i,j] == 'g':
           return (i, j)
 
   def rocks_pos(self, state):
@@ -67,59 +65,6 @@ class Game:
       for j in range(len(state[0])):
         if state[i,j] == 'a' or state[i,j] == 'A' or state[i,j] == '@' or state[i,j] == '_':
           return i,j
-
-  def left(self, pos):
-    return [pos[0], pos[1] - 1] 
-  def right(self, pos):
-    return [pos[0], pos[1] + 1] 
-  def up(self, pos):
-    return [pos[0] - 1, pos[1]] 
-  def down(self, pos):
-    return [pos[0] + 1, pos[1]] 
-
-#  s, d, f, moved, n_pos, k = rules(state, level, diamonds, finish, pos,  v, key)
-#  def possible_actions(self, agent, game):
-  def possible_actions(self, state, level, diamonds, finish, pos, key):
-#    a_pos = agent.pos
-#    key =  agent.has_key
-#    state = game.state
-#    diamonds = game.diamonds
-#    finish = game.finish
-#    level = game.level
-
-    l = self.left(pos)
-    r = self.right(pos)
-    u = self.up(pos)
-    d = self.down(pos)
-
-    actions = { 'l': l, 'r': r, 'u': u, 'd': d }
-    moves = { 'l': l, 'r': r, 'u': u, 'd': d }
-    for kd, v in actions.items():
-      a_pos = copy.deepcopy(pos)
-      key =  copy.deepcopy(key)
-      state = copy.deepcopy(state)
-      diamonds = copy.deepcopy(diamonds)
-      finish = copy.deepcopy(finish)
-      level = copy.deepcopy(level)
-#      a2 = copy.deepcopy(agent)
-#      g2 = copy.deepcopy(game)
-#      key =  a2.has_key
-#      pos = a2.pos
-#      state = g2.state
-#      diamonds = g2.diamonds
-#      finish = g2.finish
-#      level = g2.level
-#      print('must not change: ', game.state)
-#      print('must not change: ', state)
-#      print(' move: ', k)
-#      print('pos bf: ', a2.pos)
-      s, d, f, moved, n_pos, k = rules(state, level, diamonds, finish, a_pos,  v, key)
-#      print('pos after: ', a2.pos)
-      if not moved:
-        del moves[kd]
-#        print('MOVE DEL: ', k)#, actions[k]())
-#        print(moves[k])
-    return moves 
 
   def play(self):
     pass
