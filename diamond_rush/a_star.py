@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
-import numpy as np
-
-# How to optimize with this 
-from heapq import heappush, heappop
+# How to optimize with this? 
+#from heapq import heappush, heappop
 
 # Diamond heuristic
 def h_d(src, goal):
