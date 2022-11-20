@@ -92,15 +92,20 @@ def a_star(game, agent, end):
     # Fix tuple and list output -> use just one
 #    print('Are equal? ', type(current_node.pos), type(end_node.pos))
     if current_node == end_node:
+      trap = False
       path = []
       current = current_node
       t = current_node
       while current is not None:
 #        print('current node: ', current.pos)
         path.append([current.direction, current.pos])
+        if current.parent is not None:
+          past = current.parent.state[current.pos[0], current.pos[1]]
+          if past == 'r' or past == 's' or past == 'R':
+            trap = True
         current = current.parent
       # reversed path
-      return path[::-1], t.state, t.diamonds, t.finish, t.pos, t.key
+      return path[::-1], t.state, t.diamonds, t.finish, t.pos, t.key, trap
 
     # Generate children
     children = []

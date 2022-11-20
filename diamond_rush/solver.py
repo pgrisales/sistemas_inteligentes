@@ -6,6 +6,7 @@ class Diamond:
   def __init__(self, pos, h):
     self.pos = pos
     self.h = h
+    self.trap = False
 
 def h(src, goal):
   return abs(src[0] - goal[0]) +  abs(src[1] - goal[1])  
@@ -32,36 +33,54 @@ def set_p(pos, d):
   
   return d
 
+class State:
+  def __init__(path, state, diamonds, finish, pos, key, trap):
+    self.path = path
+    self.state = state
+    self.diamonds = diamonds
+    self.finish = finish
+    self.pos = pos
+    self.key = key
+    self.trap = trap
+
 def solver(game, agent):
   a = copy.deepcopy(agent)
   g = copy.deepcopy(game)
 
   solution = []
+  perm = []
   diamonds = i_p(a.pos, g.diamonds)
   #for i in diamonds:
   #  print(i.pos, i.h)
+
   while len(diamonds) > 0:
     i = diamonds[0]
     print('Objetivo: ', i.pos, i.h)
-    path, g.state, g.diamonds, g.finish, a.pos, a.key  = a_star(g, a, i.pos)
+    path, g.state, g.diamonds, g.finish, a.pos, a.key, trap  = a_star(g, a, i.pos)
+    n
 
-    diamonds.remove(i)
+    if path is not None:
+      diamonds.remove(i)
 ### check if pos diamonds has been already visited TODO: improve this 
-    for x in solution:
-      for z in x:
+      print(path)
+      for x in path:
         for d in diamonds:
-          if z[1] in d.pos:
+          if x[1] in d.pos:
             diamonds.remove(d)
-        print('Rest: ', d.pos, d.h)
-    diamonds = set_p(a.pos, diamonds)
-    solution.append(path[1:])
+          print("###################################")
+          print('Rest: ', x[1], d.pos, d.h)
+
+      diamonds = set_p(a.pos, diamonds)
+      solution.append(path[1:])
+
+# if trap dont remove for permutations 
+    else:
+      diamonds[0], diamonds[1] = diamonds[1], diamonds[0]
     print('agent position: ', a.pos)
     print('Diamond goal: ', i.pos)
-    for j in path[1:]:
-      print(j)
 
   g.diamonds = diamonds
-  fp, s, d, f, pos, key = a_star(g, a, game.g_pos)
+  fp, s, d, f, pos, key, trap = a_star(g, a, game.g_pos)
   print(fp[1:])
   solution.append(fp[1:])
 

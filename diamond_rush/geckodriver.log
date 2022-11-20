@@ -4188,3 +4188,423 @@ JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 
 JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
 1668962924735	Marionette	INFO	Stopped listening on port 35823
 console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668966795567	geckodriver	INFO	Listening on 127.0.0.1:52567
+1668966796056	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "52411" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilekZEd4r"
+Gtk-Message: 12:53:16.073: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668966796509	Marionette	INFO	Marionette enabled
+1668966796511	Marionette	INFO	Listening on port 38825
+Read port: 38825
+WebDriver BiDi listening on ws://127.0.0.1:52411
+1668966796616	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilekZEd4r/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52411/devtools/browser/19d428a2-221d-4231-98d8-1b2a088e3456
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668966814480	Marionette	INFO	Stopped listening on port 38825
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1668970293747	geckodriver	INFO	Listening on 127.0.0.1:35919
+1668970294217	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "43745" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilegeJ6cy"
+Gtk-Message: 13:51:34.241: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668970294761	Marionette	INFO	Marionette enabled
+1668970294765	Marionette	INFO	Listening on port 34557
+Read port: 34557
+WebDriver BiDi listening on ws://127.0.0.1:43745
+1668970294881	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilegeJ6cy/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:43745/devtools/browser/e2d3b63e-6b76-45b3-9ba0-acdc4ce5e13f
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+1668970298969	Marionette	INFO	Stopped listening on port 46845
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668970318053	Marionette	INFO	Stopped listening on port 34557
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668970879488	geckodriver	INFO	Listening on 127.0.0.1:55617
+1668970879940	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "55843" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileKGvEli"
+Gtk-Message: 14:01:19.955: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668970880373	Marionette	INFO	Marionette enabled
+1668970880375	Marionette	INFO	Listening on port 38515
+Read port: 38515
+WebDriver BiDi listening on ws://127.0.0.1:55843
+1668970880469	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileKGvEli/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:55843/devtools/browser/c38b07eb-98cb-407a-99f7-407c672fed1a
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668970890813	Marionette	INFO	Stopped listening on port 38515
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668970921321	geckodriver	INFO	Listening on 127.0.0.1:50323
+1668970921807	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "37703" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileoIvkd9"
+Gtk-Message: 14:02:01.823: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668970922242	Marionette	INFO	Marionette enabled
+1668970922244	Marionette	INFO	Listening on port 39217
+Read port: 39217
+WebDriver BiDi listening on ws://127.0.0.1:37703
+1668970922339	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileoIvkd9/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:37703/devtools/browser/addb9d33-bb6a-4da0-8f1d-fa2718f9ab46
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668970932199	Marionette	INFO	Stopped listening on port 39217
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668970975315	geckodriver	INFO	Listening on 127.0.0.1:50371
+1668970975805	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "34617" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileklrObY"
+Gtk-Message: 14:02:55.820: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668970976240	Marionette	INFO	Marionette enabled
+1668970976242	Marionette	INFO	Listening on port 36865
+Read port: 36865
+WebDriver BiDi listening on ws://127.0.0.1:34617
+1668970976343	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileklrObY/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:34617/devtools/browser/68033084-a48c-4e1c-ad6f-26ed69f1cb34
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668970991706	Marionette	INFO	Stopped listening on port 36865
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668971124740	geckodriver	INFO	Listening on 127.0.0.1:52647
+1668971125224	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "41107" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile5yk38I"
+Gtk-Message: 14:05:25.240: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668971125668	Marionette	INFO	Marionette enabled
+1668971125670	Marionette	INFO	Listening on port 37361
+Read port: 37361
+WebDriver BiDi listening on ws://127.0.0.1:41107
+1668971125776	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile5yk38I/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:41107/devtools/browser/dd4ee51d-1dd9-4ca9-9003-c3672c768e66
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668971137977	Marionette	INFO	Stopped listening on port 37361
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668977247040	geckodriver	INFO	Listening on 127.0.0.1:54339
+1668977247528	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "36493" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileLBG1iR"
+Gtk-Message: 15:47:27.544: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668977247974	Marionette	INFO	Marionette enabled
+1668977247976	Marionette	INFO	Listening on port 33575
+Read port: 33575
+WebDriver BiDi listening on ws://127.0.0.1:36493
+1668977248074	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileLBG1iR/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:36493/devtools/browser/f7f77a7a-20c8-4396-8871-50ac0ec10ec5
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: resource://gre/actors/ContentMetaChild.jsm, line 183: InvalidStateError: JSWindowActorChild.sendAsyncMessage: JSWindowActorChild cannot send at the moment
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668977258689	Marionette	INFO	Stopped listening on port 33575
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668977273866	geckodriver	INFO	Listening on 127.0.0.1:57347
+1668977274357	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "48401" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile2MZHr5"
+Gtk-Message: 15:47:54.374: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668977274791	Marionette	INFO	Marionette enabled
+1668977274793	Marionette	INFO	Listening on port 35057
+Read port: 35057
+WebDriver BiDi listening on ws://127.0.0.1:48401
+1668977274887	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile2MZHr5/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:48401/devtools/browser/528cd9b2-d2f7-4a85-87d4-f8117614a4dd
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668977284730	Marionette	INFO	Stopped listening on port 35057
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668977288019	geckodriver	INFO	Listening on 127.0.0.1:52687
+1668977288510	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "37371" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileSJSUIQ"
+Gtk-Message: 15:48:08.526: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668977288952	Marionette	INFO	Marionette enabled
+1668977288955	Marionette	INFO	Listening on port 35459
+Read port: 35459
+WebDriver BiDi listening on ws://127.0.0.1:37371
+1668977289054	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileSJSUIQ/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:37371/devtools/browser/95fba6d2-b73b-4710-8f69-602f4ddebfa0
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668977307497	Marionette	INFO	Stopped listening on port 35459
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1668977335899	geckodriver	INFO	Listening on 127.0.0.1:56279
+1668977336389	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "45155" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileXPNAPX"
+Gtk-Message: 15:48:56.406: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668977336854	Marionette	INFO	Marionette enabled
+1668977336858	Marionette	INFO	Listening on port 43831
+Read port: 43831
+WebDriver BiDi listening on ws://127.0.0.1:45155
+1668977336962	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileXPNAPX/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:45155/devtools/browser/0c8b8c4e-745f-447e-ba7e-bae366b6e144
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668977358700	geckodriver	INFO	Listening on 127.0.0.1:35413
+1668977359189	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "45149" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileE4rFtR"
+Gtk-Message: 15:49:19.207: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668977359657	Marionette	INFO	Marionette enabled
+1668977359659	Marionette	INFO	Listening on port 35457
+Read port: 35457
+WebDriver BiDi listening on ws://127.0.0.1:45149
+1668977359757	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileE4rFtR/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:45149/devtools/browser/2353261a-ff5d-4bba-a1f1-47e25ca0d96c
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668977375234	Marionette	INFO	Stopped listening on port 35457
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668977411945	geckodriver	INFO	Listening on 127.0.0.1:35297
+1668977412428	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "46637" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilePVk9so"
+Gtk-Message: 15:50:12.444: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668977412900	Marionette	INFO	Marionette enabled
+1668977412903	Marionette	INFO	Listening on port 43395
+Read port: 43395
+WebDriver BiDi listening on ws://127.0.0.1:46637
+1668977412993	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilePVk9so/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:46637/devtools/browser/dbf48c08-3165-4adb-bbb0-a3a771e3a5da
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668977423426	Marionette	INFO	Stopped listening on port 43395
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668977510683	Marionette	INFO	Stopped listening on port 43831
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668977660839	geckodriver	INFO	Listening on 127.0.0.1:32963
+1668977661325	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "60109" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileCv42P5"
+Gtk-Message: 15:54:21.340: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668977661764	Marionette	INFO	Marionette enabled
+1668977661767	Marionette	INFO	Listening on port 44077
+Read port: 44077
+WebDriver BiDi listening on ws://127.0.0.1:60109
+1668977661850	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileCv42P5/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:60109/devtools/browser/53f4d3a0-1b89-40f1-bb72-322ab23a45f8
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668977687595	Marionette	INFO	Stopped listening on port 44077
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668977797562	geckodriver	INFO	Listening on 127.0.0.1:42579
+1668977798049	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "58887" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilezW5apn"
+Gtk-Message: 15:56:38.065: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668977798494	Marionette	INFO	Marionette enabled
+1668977798497	Marionette	INFO	Listening on port 37159
+Read port: 37159
+WebDriver BiDi listening on ws://127.0.0.1:58887
+1668977798595	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilezW5apn/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:58887/devtools/browser/dd70173a-5cd6-4449-919e-c38d9f406c66
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668977814036	Marionette	INFO	Stopped listening on port 37159
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668977852352	geckodriver	INFO	Listening on 127.0.0.1:39219
+1668977852841	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "50907" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileDdypQq"
+Gtk-Message: 15:57:32.857: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668977853282	Marionette	INFO	Marionette enabled
+1668977853285	Marionette	INFO	Listening on port 34853
+Read port: 34853
+WebDriver BiDi listening on ws://127.0.0.1:50907
+1668977853392	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileDdypQq/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50907/devtools/browser/efa0bce0-2b25-495e-92d1-bb6852e46ee7
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668977869158	Marionette	INFO	Stopped listening on port 34853
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668977963905	geckodriver	INFO	Listening on 127.0.0.1:48127
+1668977964393	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "35337" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilehcffbn"
+Gtk-Message: 15:59:24.408: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668977964826	Marionette	INFO	Marionette enabled
+1668977964828	Marionette	INFO	Listening on port 35203
+Read port: 35203
+WebDriver BiDi listening on ws://127.0.0.1:35337
+1668977964922	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilehcffbn/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:35337/devtools/browser/4a44e83b-f23b-4fd7-8d92-09c30bc68f61
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668977982155	Marionette	INFO	Stopped listening on port 35203
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668978333786	geckodriver	INFO	Listening on 127.0.0.1:52255
+1668978334273	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "52535" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilepsG1yP"
+Gtk-Message: 16:05:34.289: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668978334703	Marionette	INFO	Marionette enabled
+1668978334705	Marionette	INFO	Listening on port 36965
+WebDriver BiDi listening on ws://127.0.0.1:52535
+Read port: 36965
+1668978334848	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilepsG1yP/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52535/devtools/browser/75a0b654-da72-44dc-9320-05fc5babcb14
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668978353537	Marionette	INFO	Stopped listening on port 36965
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668978392888	geckodriver	INFO	Listening on 127.0.0.1:47189
+1668978393377	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "57909" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile5HuIDV"
+Gtk-Message: 16:06:33.394: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668978393824	Marionette	INFO	Marionette enabled
+1668978393827	Marionette	INFO	Listening on port 40857
+Read port: 40857
+WebDriver BiDi listening on ws://127.0.0.1:57909
+1668978393926	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile5HuIDV/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:57909/devtools/browser/63acff0a-a28a-4d09-9a41-9dd977b03ed0
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668978403318	Marionette	INFO	Stopped listening on port 40857
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668978426733	geckodriver	INFO	Listening on 127.0.0.1:45637
+1668978427217	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "54713" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofiletlA4x1"
+Gtk-Message: 16:07:07.234: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668978427652	Marionette	INFO	Marionette enabled
+1668978427654	Marionette	INFO	Listening on port 45807
+Read port: 45807
+WebDriver BiDi listening on ws://127.0.0.1:54713
+1668978427750	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofiletlA4x1/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54713/devtools/browser/8f793c95-2aa2-4af2-91bd-2bdbda3f5d17
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668978448949	Marionette	INFO	Stopped listening on port 45807
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668978479464	geckodriver	INFO	Listening on 127.0.0.1:40297
+1668978479949	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "58091" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileUaAM19"
+Gtk-Message: 16:07:59.966: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668978480386	Marionette	INFO	Marionette enabled
+1668978480388	Marionette	INFO	Listening on port 35181
+Read port: 35181
+WebDriver BiDi listening on ws://127.0.0.1:58091
+1668978480478	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileUaAM19/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:58091/devtools/browser/b809edd8-6a69-4ca7-8723-c2f0c8e79a9c
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668978489270	Marionette	INFO	Stopped listening on port 35181
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668978572570	geckodriver	INFO	Listening on 127.0.0.1:49315
+1668978573055	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "57277" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileo6J2O8"
+Gtk-Message: 16:09:33.072: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668978573498	Marionette	INFO	Marionette enabled
+1668978573500	Marionette	INFO	Listening on port 43077
+Read port: 43077
+WebDriver BiDi listening on ws://127.0.0.1:57277
+1668978573594	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileo6J2O8/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:57277/devtools/browser/fbd6aaf2-4031-4320-be31-afe68903e949
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668978582479	Marionette	INFO	Stopped listening on port 43077
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668978614293	geckodriver	INFO	Listening on 127.0.0.1:54445
+1668978614776	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "52355" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileeRG1Rl"
+Gtk-Message: 16:10:14.793: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668978615214	Marionette	INFO	Marionette enabled
+1668978615216	Marionette	INFO	Listening on port 36703
+Read port: 36703
+WebDriver BiDi listening on ws://127.0.0.1:52355
+1668978615302	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileeRG1Rl/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52355/devtools/browser/639bc54c-1ee0-496e-9540-f1fdec34ee0a
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668978626005	Marionette	INFO	Stopped listening on port 36703
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668978655027	geckodriver	INFO	Listening on 127.0.0.1:52373
+1668978655513	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "36515" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileFwUvop"
+Gtk-Message: 16:10:55.529: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668978655949	Marionette	INFO	Marionette enabled
+1668978655951	Marionette	INFO	Listening on port 43607
+Read port: 43607
+WebDriver BiDi listening on ws://127.0.0.1:36515
+1668978656043	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileFwUvop/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:36515/devtools/browser/7745323f-4f42-4872-bbe0-5b5819cf0956
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668978698158	Marionette	INFO	Stopped listening on port 43607
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668978785720	geckodriver	INFO	Listening on 127.0.0.1:50831
+1668978786205	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "54791" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilevRZjHs"
+Gtk-Message: 16:13:06.222: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668978786641	Marionette	INFO	Marionette enabled
+1668978786644	Marionette	INFO	Listening on port 36369
+Read port: 36369
+WebDriver BiDi listening on ws://127.0.0.1:54791
+1668978786739	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilevRZjHs/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54791/devtools/browser/ea3fc124-9b4a-4443-9df0-82a64ed1bab8
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668978803675	Marionette	INFO	Stopped listening on port 36369
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668980896267	geckodriver	INFO	Listening on 127.0.0.1:34589
+1668980896787	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "48969" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileLCSlmP"
+Gtk-Message: 16:48:16.804: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668980897288	Marionette	INFO	Marionette enabled
+1668980897292	Marionette	INFO	Listening on port 33099
+WebDriver BiDi listening on ws://127.0.0.1:48969
+Read port: 33099
+1668980897455	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileLCSlmP/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:48969/devtools/browser/ec490ed3-97f1-46f4-94fe-6b44a4d5fd6b
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668980928831	Marionette	INFO	Stopped listening on port 33099
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1668980933101	geckodriver	INFO	Listening on 127.0.0.1:46469
+1668980933585	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "38339" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileCOMPnb"
+Gtk-Message: 16:48:53.602: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[GFX1-]: glxtest: VA-API test failed: failed to initialise VAAPI connection.
+1668980934019	Marionette	INFO	Marionette enabled
+1668980934021	Marionette	INFO	Listening on port 34813
+Read port: 34813
+WebDriver BiDi listening on ws://127.0.0.1:38339
+1668980934119	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileCOMPnb/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:38339/devtools/browser/745b4ad7-8fee-4f45-8e10-4681d9f80e0b
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1668980951534	Marionette	INFO	Stopped listening on port 34813
