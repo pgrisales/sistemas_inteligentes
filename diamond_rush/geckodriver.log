@@ -4344,3 +4344,43 @@ JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData 
 1669151655175	Marionette	INFO	Stopped listening on port 36765
 console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
 Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1669153829581	geckodriver	INFO	Listening on 127.0.0.1:60077
+1669153830028	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "33371" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileEgrhd1"
+Gtk-Message: 16:50:30.051: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1669153830683	Marionette	INFO	Marionette enabled
+1669153830686	Marionette	INFO	Listening on port 45125
+Read port: 45125
+ATTENTION: default value of option mesa_glthread overridden by environment.
+WebDriver BiDi listening on ws://127.0.0.1:33371
+1669153830833	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileEgrhd1/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:33371/devtools/browser/00c7c0ed-18e9-4bb0-a816-5f46e834e1a0
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+WARNING: Kernel has no file descriptor comparison support: Operation not permitted
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1669153878272	Marionette	INFO	Stopped listening on port 45125
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1669153880473	geckodriver	INFO	Listening on 127.0.0.1:46125
+1669153880919	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "50517" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileQJokN6"
+Gtk-Message: 16:51:20.943: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1669153881592	Marionette	INFO	Marionette enabled
+1669153881596	Marionette	INFO	Listening on port 46519
+Read port: 46519
+ATTENTION: default value of option mesa_glthread overridden by environment.
+WebDriver BiDi listening on ws://127.0.0.1:50517
+1669153881729	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileQJokN6/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50517/devtools/browser/2e357b25-8253-4804-b946-c01b1458bd99
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+WARNING: Kernel has no file descriptor comparison support: Operation not permitted
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1669153939957	Marionette	INFO	Stopped listening on port 46519
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo

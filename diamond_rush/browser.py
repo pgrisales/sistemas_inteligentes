@@ -42,14 +42,14 @@ class Browser:
 
   def get_board(self):
 
-    print("Presione cualquier tecla cuando haya cargado la ventana del juego para iniciar...")
+    print("Presione Enter cuando haya cargado la ventana del juego para iniciar...", end="")
     x = input()
     print("3...")
     time.sleep(0.5)
     print("2...")
     time.sleep(0.5)
     print("1...")
-    time.sleep(0.5)      
+    time.sleep(0.5)
     
     canvas = self.driver.find_element("css selector", "canvas")
     ss = canvas.screenshot_as_png
