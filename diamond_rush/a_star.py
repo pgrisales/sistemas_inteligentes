@@ -56,7 +56,6 @@ def a_star(o_g, o_a, end):
   agent = copy.deepcopy(o_a)
   game = copy.deepcopy(o_g)
 
-
   k =  agent.has_key
   s = game.state
   d = game.diamonds
@@ -81,9 +80,8 @@ def a_star(o_g, o_a, end):
   # Loop until you find the end
   while len(open_list) > 0:
     count += 1
-#    if count == 160:
     if count == 160:
-      return [], o_g.state, o_g.diamonds, o_g.finish, o_a.pos, o_a.key, False 
+      return [], o_g.state, o_g.diamonds, o_g.finish, o_a.pos, o_a.has_key, False 
     # Get the current node
     current_node = open_list[0]
     current_index = 0

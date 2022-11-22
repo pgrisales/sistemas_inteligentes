@@ -160,6 +160,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
     if key:
       state[ni,nj] = 'a'
       moved = True
+      key = False
     else:
       state[i, j] = a_state
 

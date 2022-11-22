@@ -51,26 +51,34 @@ class State:
 def solver(game, agent) :
   a = copy.deepcopy(agent)
   g = copy.deepcopy(game)
-
+  
+  copy_d = copy.deepcopy(g.diamonds)
   solution = []
   perm = []
   goals = i_p(a.pos, g.diamonds)
-  #for i in diamonds:
-  #  print(i.pos, i.h)
   count = 0
   idx = 0
   while len(goals) > 0:
     count += 1
-    if count == 40:
-      break
+    print('count: ', count)
+    if count == 30:
+      a = copy.deepcopy(agent)
+      g = copy.deepcopy(game)
+      solution = []
+      goals = i_p(a.pos, copy_d)
+      goals[0], goals[1] = goals[1], goals[0]
+      count = 0
+      idx = 0
+
     i = goals[idx]
 
     print('agent position: ', a.pos)
     print('Objetivo: ', i.pos, i.h)
     print()
 
-    path, g.state, g.diamonds, g.finish, a.pos, a.key, trap = a_star(g, a, i.pos)
-    
+    path, g.state, g.diamonds, g.finish, a.pos, a.has_key, trap = a_star(g, a, i.pos)
+    print(path)
+
     if len(path) > 0:
       if not trap:
         print(trap, i.pos, 'trap in pos')
@@ -94,7 +102,6 @@ def solver(game, agent) :
       print(a.pos)
       if len(goals) > idx:
         print('SWAP DONE')
-        print(a.key)
         for i in goals:
           print('goals restantes')
           print(i.pos, i.h)
