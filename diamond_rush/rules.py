@@ -33,6 +33,7 @@
 
 # TODO: replace all key-agent interactions with this function
 import copy
+import sys
 
 def left(pos):
   return [pos[0], pos[1] - 1] 
@@ -118,6 +119,15 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
   if state[ni,nj] == 's':       # spike
     state[ni,nj] = 'A'
     moved = True
+# Done
+  elif (ni,nj) in B:     # bDoor
+    idx = B.index((ni, nj))
+    bi, bj = b[idx]
+    if state[bi ,bj] != 'b':
+      state[ni, nj] = 'a'
+      moved = True
+    else:
+      state[i, j] = a_state
 
 # Done
   elif state[ni,nj] == 'p':     # path
@@ -430,15 +440,6 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
     idx = b.index((ni, nj))
     state[B[idx]] = 'p'
 
-# Done
-  elif state[ni,nj] == 'B':     # bDoor
-    idx = B.index((ni, nj))
-    bi, bj = b[idx]
-    if state[bi ,bj] != 'b':
-      state[ni, nj] = 'a'
-      moved = True
-    else:
-      state[i, j] = a_state
 
   else:
     print(state)

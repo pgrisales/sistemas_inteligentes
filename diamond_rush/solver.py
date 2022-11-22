@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import copy
 from a_star import a_star
-from game import buttons_pos, holes_pos 
+from game import buttons_pos, holes_pos, keys_pos
 
 import sys
 
@@ -55,6 +55,8 @@ def solver(game, agent) :
   copy_d = copy.deepcopy(g.diamonds)
   solution = []
   perm = []
+  diamonds = g.diamonds
+  keys = keys_pos(g.state)
   goals = i_p(a.pos, g.diamonds)
   count = 0
   idx = 0
@@ -77,6 +79,7 @@ def solver(game, agent) :
     print()
 
     path, g.state, g.diamonds, g.finish, a.pos, a.has_key, trap = a_star(g, a, i.pos)
+    
     print(path)
 
     if len(path) > 0:

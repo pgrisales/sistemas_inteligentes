@@ -71,6 +71,14 @@ def diamonds_pos(state):
         pos.append((i,j))
   return pos 
 
+def keys_pos(state):
+  pos = []
+  for i in range(len(state)):
+    for j in range(len(state[0])):
+      if state[i,j] == 'k':
+        pos.append((i,j))
+  return pos 
+
 def agent_pos(state):
   for i in range(len(state)):
     for j in range(len(state[0])):
