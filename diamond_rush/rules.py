@@ -62,7 +62,7 @@ def possible_actions(g_state, g_level, g_goal, g_diamonds, g_finish, pos, a_key)
 
   #return state, diamonds, finish, moved, (ni, nj), key
     s, d, f, moved, n_pos, k = rules(state, level, goal, diamonds, finish, pos,  v, key)
-    moves[kd] = [s, actions[kd]]
+    moves[kd] = [s, actions[kd], d, f, k]
 #      print('pos after: ', a2.pos)
     if not moved:
       del moves[kd]
