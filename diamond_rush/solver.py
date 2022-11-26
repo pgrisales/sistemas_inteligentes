@@ -4,25 +4,19 @@ from a_star import a_star
 from game import buttons_pos, holes_pos, keys_pos, rocks_pos
 import sys
 
-from itertools import permutations
-
-class State:
-  def __init__(path=None, state=None, goals=None, finish=None, pos=None, key=None, trap=None):
-    self.path = path
-    self.state = state
-    self.goals = goals 
-    self.finish = finish
-    self.pos = pos
-    self.key = key
-    self.trap = trap
-
 class Goal:
-  def __init__(self, pos, h, type_char):
+  def __init__(self, pos, h, type_char, agent=None, game=None, parent=None, childs=[], visited= set()):
     self.pos = pos
     self.h = h
     self.h2 = 0
     self.type = type_char
     self.trap = False
+    self.parent = parent
+    self.childs = childs
+    self.visited = visited
+    self.path = []
+    self.agent = agent
+    self.game = game
 
   def __eq__(self, other):
     return self.pos[0] == other.pos[0] and self.pos[1] == other.pos[1]
@@ -100,54 +94,6 @@ def set_priority(agent, *args):
 
   return goals
 
-def update_priority(a, g, goals):
-  discarted = get_goals(a, g)
-  update = []
-
-  for g in goals:
-    for g2 in discarted:
-#      print(len(discarted))
-      if g.pos == g2.pos:
-        update.append(g)
-        discarted.remove(g2)
-        continue
-
-  for idx, i in enumerate(update):
-    if i.type == 'd':
-      if h(a.pos, i.pos) < 3:
-        i.h = 3
-      else:
-        i.h += h(a.pos, i.pos) + i.h2
-    elif i.type == 'k':
-      if h(a.pos, i.pos) < 3:
-        i.h = 3
-      else:
-        i.h += h(a.pos, i.pos) + i.h2
-      if a.has_key:
-        i.h += 10
-    elif i.type == 'b':
-      i.h += h(a.pos, i.pos) + i.h2 + 8
-    elif i.type == 'h':
-      i.h += h(a.pos, i.pos) + i.h2 + 8
-
-    for j in range(idx):
-      if update[idx].h < update[j].h:
-        update[j], update[idx] = update[idx], update[j]
-#        update = update[:j] +[update[idx]] + update[idx:]
-  return update
-
-def new_order(goals, n):
-  if n:
-    for i in goals:
-      for j in n:
-        if j == i:
-          j.h = i.h
-  else:
-    for i in goals:
-      n.append(i)
-
-  return n
-
 def get_goals(a, g):
   diamonds= set_goals_diamonds(a.pos, g.diamonds)
   keys = set_goals_keys(a.pos, keys_pos(g.state))
@@ -156,97 +102,180 @@ def get_goals(a, g):
 #  rocks = rocks_pos(g.state) # Not sure its needed here
 
   goals = set_priority(a, diamonds, keys, holes, buttons)
-
   return goals
+
+count = 0
+def make_path(agent, game, src, goals, visited_trap=set()):
+  global count
+  count += 1
+  print(count)
+  a = copy.deepcopy(agent)
+  g = copy.deepcopy(game)
+
+  solution = []
+  idx = 0
+  
+  goals = copy.deepcopy(goals)
+
+  print()
+  for z in goals:
+    print(z.pos, z.h)
+  print('---------------------- still to getem --------------------------------')
+
+  while not g.finish:
+    if len(goals) == 0:
+      solution = []
+
+      fp, s, d, f, pos, key, trap = a_star(g, a, game.g_pos)
+
+      while src.parent is not None:
+        print('------------------------ boy has parent ---------------------------------')
+        print('child: ', src.pos)
+        print('parent: ', src.parent.pos)
+        print(src.path)
+
+        #solution.append(src.path[-1][::-1])
+        solution.append(src.path)
+        src = src.parent
+
+      solution.reverse()
+      solution.append(fp[1:])
+      print()
+      for i in solution:
+        print(i)
+      print(len(solution))
+      print('********** solution final *****')
+
+      return solution
+
+    current = copy.deepcopy(src)
+    current.childs = goals
+
+    print('visitados ', current.visited)
+    if goals[idx].pos not in current.visited or len(goals) == 1:
+      print('############ src: ', a.pos, ' ###############')
+      print('############ end: ', goals[idx].pos, goals[idx].h, ' ###############')
+      path, g.state, g.diamonds, g.finish, a.pos, a.has_key, trap = a_star(g, a, goals[idx].pos)
+      print()
+      print('src with ', src.pos, src.h)
+      print('a.pos with ', a.pos)
+      print('path with ', goals[idx].pos, goals[idx].h)
+#      print(path)
+      print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+      
+      if len(path) > 0:
+#        visited.add(goals[idx].pos)
+        
+        temp = copy.deepcopy(goals[idx])
+        temp.agent = a
+        temp.game = g
+        temp.trap = trap
+        src.visited.add(goals[idx].pos)
+        temp.visited = src.visited
+
+        print(count, ' idx ', idx , 'src ', src.pos, ' kid ', temp.pos)
+        temp.parent = current 
+
+        new_order = get_goals(temp.agent, temp.game)
+        temp.path = path[1:]
+#        print(temp.pos, temp.path)
+
+        return make_path(temp.agent, temp.game, temp, new_order)
+
+      else:
+#        visited.add(goals[idx].pos)
+        current.visited.add(goals[idx].pos)
+#        current.childs.remove(goals[idx])
+        print('else case:')
+        print(current.visited)
+        if len(goals) > 1 and goals[idx+1].pos:# not in current.visited:
+          print('*********************************** SWAP ***********************************')
+          print(goals[idx].pos, goals[idx+1].pos)
+
+          goals = goals[idx+1:] + [goals[idx]]
+          goals = copy.deepcopy(goals)
+#          make_path(a, g, goals[idx], goals)
+          return make_path(current.agent, current.game, current, goals)
+        else:
+          print('%%%%%%%%%%%%%%%%%% backtrack parent %%%%%%%%%%%%%%%%%%%')
+          if current.parent:
+            print('child: ', current.pos, ' parent: ', current.parent.pos)
+          
+          while current.parent:
+            print('child: ', current.pos, ' parent: ', current.parent.pos)
+            if current.trap and current.parent.pos not in visited_trap:
+              print(current.pos)
+              break
+            current.visited = set()
+            current = current.parent
+
+          print('it breaks ok')
+          if current.parent and current.parent.pos not in visited_trap:
+            print(' child visited: ', current.visited)
+            print(' parent visited ', current.parent.visited)
+            current.visited = set()
+            current = current.parent
+
+          visited_trap.add(current.pos)
+#      goals = get_goals(current.agent, current.game)
+          current.childs = current.childs[idx+1:] + [current.childs[idx]]
+          for i in current.childs:
+            print(i.pos, i.h)
+          print('$$$$$$$$$$$$$$$$$$$$$$4 order after backtracking ###########################3')
+          return make_path(current.agent, current.game, current, current.childs, visited_trap)
+    else:
+      print('%%%%%%%%%%%%%%%%%% backtrack parent %%%%%%%%%%%%%%%%%%%')
+      if current.parent:
+        print('child: ', current.pos, ' parent: ', current.parent.pos)
+      
+      while current.parent:
+        print('child: ', current.pos, ' parent: ', current.parent.pos)
+        if current.trap and current.parent.pos not in visited_trap:
+          print(current.pos)
+          break
+        current.visited = set()
+        current = current.parent
+
+      print('it breaks ok')
+      if current.parent and current.parent.pos not in visited_trap:
+        print(' child visited: ', current.visited)
+        print(' parent visited ', current.parent.visited)
+        current.visited = set()
+        current = current.parent
+
+      visited_trap.add(current.pos)
+#      goals = get_goals(current.agent, current.game)
+      current.childs = current.childs[idx+1:] + [current.childs[idx]]
+      for i in current.childs:
+        print(i.pos, i.h)
+      print('$$$$$$$$$$$$$$$$$$$$$$4 order after backtracking ###########################3')
+      return make_path(current.agent, current.game, current, current.childs, visited_trap)
+
+    return []
+
+  return solution
 
 def solver(game, agent) :
   a = copy.deepcopy(agent)
   g = copy.deepcopy(game)
   
-#  goals_copy = copy.deepcopy(g.diamonds)
+  src = Goal(a.pos, 0, 'i', a , g) 
+
   solution = []
-  perm = []
 
   goals = get_goals(a, g)
-  new_g = []
+  solution = make_path(a, g, src, goals)
+  print(len(solution))
+  moves = []
 
-  count = 0
-  idx = 0
-  a = [1,2,3,4,5,6,7,8,9,10]
-  p = permutations(a)
-#  p = permutations(goals)
-  for idx, i in enumerate(list(p)):
-    print(idx, i)
-  sys.exit('carnal')
-#  while len(goals) > 0 or g.finish:
-#    count += 1
-#    print('count: ', count)
-#    if count % 15 == 0:
-#      print('######################### Game Reset ##############################')
-#      a = copy.deepcopy(agent)
-#      g = copy.deepcopy(game)
-#      solution = []
-##      goals = get_goals(a, g)
-#      goals = new_g
-#      goals = update_priority(a, g, goals)
-#      idx = 0
-#      if count == 30000:
-#        sys.exit('puta')
-#
-#    i = goals[idx]
-#
-#    print('agent position: ', a.pos)
-#    print('Objetivo: ', i.pos, i.h)
-#    print()
-#    new_g = new_order(goals, new_g)
-#
-#    path, g.state, g.diamonds, g.finish, a.pos, a.has_key, trap = a_star(g, a, i.pos)
-#    
-##    print(path)
-#    print()
-#    print('len of goals bef: ', len(goals))
-#    for i in goals:
-#      print('######################### goals Antes de la reasig ##############################')
-#      print(i.pos, i.h, i.type)
-#    print()
-#    if len(path) > 0:
-#      if not trap:
-#        new_g = new_order(goals, new_g)
-#        del goals[idx]
-##        goals.remove(idx)
-#      else:
-##        print(goals[idx].pos, goals[idx].h)
-#        goals[idx].h += 100//(idx+1)
-#        trap = False
-##        print(goals[idx].pos, goals[idx].h)
-##        sys.exit('trap')
-##        idx += 1
-##      goals = set_goals_diamonds(a.pos, g.diamonds)
-#
-#      print('NEW pos', a.pos)
-##      goals = set_goals_diamonds(a.pos, g.diamonds)
-##      goals = set_p(a.pos, goals)
-#      #goals = get_goals(a, g)
-#      goals = update_priority(a, g, goals)
-#      solution.append(path[1:])
-#      print()
-## if trap dont remove for permutations 
-#    else:
-#      print(a.pos)
-#      if len(goals) > idx:
-#        print('SWAP DONE')
-#        goals[idx].h += 100//(idx+1)
-#        goals = update_priority(a, g, goals)
-##        goals = get_goals(a, g)
-##        idx = 0
-##        solution = []
-#
-#    print()
-#
-#  fp, s, d, f, pos, key, trap = a_star(g, a, game.g_pos)
-#  solution.append(fp[1:])
+  print()
+  print()
+  print('final len ',len(solution))
+  for i in solution:
+    for j in i:
+      print(j[0])
+      moves.append(j[0])
+#  print('moves len: ', len(moves))
+#  sys.exit('die')
+  return moves 
 
-  return solution
-
-def try_perm(goals, a, g):
-  return solution, goals

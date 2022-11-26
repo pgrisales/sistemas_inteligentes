@@ -79,7 +79,7 @@ def a_star(o_g, o_a, end):
   # Loop until you find the end
   while len(open_list) > 0:
     count += 1
-    if count == 160:
+    if count == 150:
       print('shit case')
       return [], o_g.state, o_g.diamonds, o_g.finish, o_a.pos, o_a.has_key, False 
     # Get the current node
@@ -112,7 +112,7 @@ def a_star(o_g, o_a, end):
 
         current = current.parent
       # reversed path
-      print('Good case')
+#      print('Good case')
       return path[::-1], t.state, t.diamonds, t.finish, t.pos, t.key, trap
 
     # Generate children
