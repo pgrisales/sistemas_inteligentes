@@ -34,19 +34,19 @@ class Env:
     browser = Browser(self.level)
     a_pos = agent_pos(browser.get_board())
     agent = Agent(a_pos)
-    game = Game(self.level-1, a_pos)
-#    print(len(game.possible_actions(agent, game)))
-    solution = solver(game, agent)
-    moves = []
-
-# TODO: unpack
-    for i in solution:
-      for j in i:
-        moves.append(j[0])
-#        print(j[1])
-
-    browser.move(moves)
-    i = 1
+#    game = Game(self.level-1, a_pos)
+##    print(len(game.possible_actions(agent, game)))
+#    solution = solver(game, agent)
+#    moves = []
+#
+## TODO: unpack
+#    for i in solution:
+#      for j in i:
+#        moves.append(j[0])
+##        print(j[1])
+#
+#    browser.move(moves)
+#    i = 1
 #    while not game.finish:
 ##      print(game.state)
 #      run(agent, agent.testRules(), game)

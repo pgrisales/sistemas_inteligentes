@@ -49,7 +49,6 @@ class Node():
 
   def __eq__(self, other):
     return self.pos[0] == other.pos[0] and self.pos[1] == other.pos[1]
-#    return self.pos == other.pos
 
 def a_star(o_g, o_a, end):
 
@@ -81,6 +80,7 @@ def a_star(o_g, o_a, end):
   while len(open_list) > 0:
     count += 1
     if count == 160:
+      print('shit case')
       return [], o_g.state, o_g.diamonds, o_g.finish, o_a.pos, o_a.has_key, False 
     # Get the current node
     current_node = open_list[0]
@@ -109,8 +109,10 @@ def a_star(o_g, o_a, end):
 
           if past == 'r' or past == 's' or past == 'R':
             trap = True
+
         current = current.parent
       # reversed path
+      print('Good case')
       return path[::-1], t.state, t.diamonds, t.finish, t.pos, t.key, trap
 
     # Generate children

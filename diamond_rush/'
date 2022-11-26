@@ -4,8 +4,6 @@ from a_star import a_star
 from game import buttons_pos, holes_pos, keys_pos, rocks_pos
 import sys
 
-from itertools import permutations
-
 class State:
   def __init__(path=None, state=None, goals=None, finish=None, pos=None, key=None, trap=None):
     self.path = path
@@ -97,32 +95,36 @@ def set_priority(agent, *args):
       for j in range(idx):
         if goals[idx].h < goals[j].h:
             goals = goals[:j] + [goals[j]] + goals[j:]
+#          if j == idx:
+#            goals = goals[:j] + [goals[j]]
+#          else:
+#            goals = goals[:j] + [goals[j]] + goals[j:]
 
   return goals
 
 def update_priority(a, g, goals):
   discarted = get_goals(a, g)
-  update = []
+  print('#################### len discarted:', len(discarted), ' ############################')
 
+  update = []
+  print(len(goals))
   for g in goals:
     for g2 in discarted:
 #      print(len(discarted))
       if g.pos == g2.pos:
+        print('repited : ',g.pos)
         update.append(g)
+        print('#################### len update:', len(update), ' ############################')
         discarted.remove(g2)
         continue
+    print('#################### len discarted:', len(discarted), ' ############################')
 
+  print('#################### len update:', len(update), ' ############################')
   for idx, i in enumerate(update):
     if i.type == 'd':
-      if h(a.pos, i.pos) < 3:
-        i.h = 3
-      else:
-        i.h += h(a.pos, i.pos) + i.h2
+      i.h += h(a.pos, i.pos) + i.h2
     elif i.type == 'k':
-      if h(a.pos, i.pos) < 3:
-        i.h = 3
-      else:
-        i.h += h(a.pos, i.pos) + i.h2
+      i.h += h(a.pos, i.pos) + i.h2
       if a.has_key:
         i.h += 10
     elif i.type == 'b':
@@ -130,23 +132,27 @@ def update_priority(a, g, goals):
     elif i.type == 'h':
       i.h += h(a.pos, i.pos) + i.h2 + 8
 
+    print()
+    print(len(update))
+    for z in update:
+      print(z.pos, z.h, end=' ')
+    print()
     for j in range(idx):
+      print('new len in re_order: ', len(update))
       if update[idx].h < update[j].h:
+        print(update[j].pos, update[j].h, '   ', update[idx].pos, update[idx].h)
+        print('idx: ',idx)
+        print('j:', j)
+        for z in update:
+          print(z.pos, z.h, end=' ')
+        print()
         update[j], update[idx] = update[idx], update[j]
 #        update = update[:j] +[update[idx]] + update[idx:]
+#        for z in update:
+#          print(z.pos, z.h, z.h2)
+
+  print('#################### before return len update:', len(update), ' ############################')
   return update
-
-def new_order(goals, n):
-  if n:
-    for i in goals:
-      for j in n:
-        if j == i:
-          j.h = i.h
-  else:
-    for i in goals:
-      n.append(i)
-
-  return n
 
 def get_goals(a, g):
   diamonds= set_goals_diamonds(a.pos, g.diamonds)
@@ -168,83 +174,76 @@ def solver(game, agent) :
   perm = []
 
   goals = get_goals(a, g)
-  new_g = []
 
   count = 0
   idx = 0
-  a = [1,2,3,4,5,6,7,8,9,10]
-  p = permutations(a)
-#  p = permutations(goals)
-  for idx, i in enumerate(list(p)):
-    print(idx, i)
-  sys.exit('carnal')
-#  while len(goals) > 0 or g.finish:
-#    count += 1
-#    print('count: ', count)
-#    if count % 15 == 0:
-#      print('######################### Game Reset ##############################')
-#      a = copy.deepcopy(agent)
-#      g = copy.deepcopy(game)
-#      solution = []
-##      goals = get_goals(a, g)
-#      goals = new_g
-#      goals = update_priority(a, g, goals)
-#      idx = 0
-#      if count == 30000:
-#        sys.exit('puta')
-#
-#    i = goals[idx]
-#
-#    print('agent position: ', a.pos)
-#    print('Objetivo: ', i.pos, i.h)
-#    print()
-#    new_g = new_order(goals, new_g)
-#
-#    path, g.state, g.diamonds, g.finish, a.pos, a.has_key, trap = a_star(g, a, i.pos)
-#    
-##    print(path)
-#    print()
-#    print('len of goals bef: ', len(goals))
-#    for i in goals:
-#      print('######################### goals Antes de la reasig ##############################')
-#      print(i.pos, i.h, i.type)
-#    print()
-#    if len(path) > 0:
-#      if not trap:
-#        new_g = new_order(goals, new_g)
-#        del goals[idx]
-##        goals.remove(idx)
+
+  while len(goals) > 0 or g.finish:
+    count += 1
+    print('count: ', count)
+    if count == 30:
+      print('######################### Game Reset ##############################')
+      a = copy.deepcopy(agent)
+      g = copy.deepcopy(game)
+      solution = []
+      goals = get_goals(a, g)
+##      goals = set_goals_diamonds(a.pos, copy_d)
+#      goals[0], goals[1] = goals[1], goals[0]
+      count = 0
+      idx = 0
+      sys.exit('puta')
+
+    i = goals[idx]
+
+    print('agent position: ', a.pos)
+    print('Objetivo: ', i.pos, i.h)
+    print()
+
+    path, g.state, g.diamonds, g.finish, a.pos, a.has_key, trap = a_star(g, a, i.pos)
+    
+#    print(path)
+
+    print()
+    print('len of goals bef: ', len(goals))
+    for i in goals:
+      print('######################### goals Antes de la reasig ##############################')
+      print(i.pos, i.h, i.type)
+    print()
+    if len(path) > 0:
+      if not trap:
+        del goals[idx]
+#        goals.remove(idx)
 #      else:
-##        print(goals[idx].pos, goals[idx].h)
-#        goals[idx].h += 100//(idx+1)
-#        trap = False
-##        print(goals[idx].pos, goals[idx].h)
-##        sys.exit('trap')
-##        idx += 1
-##      goals = set_goals_diamonds(a.pos, g.diamonds)
-#
-#      print('NEW pos', a.pos)
-##      goals = set_goals_diamonds(a.pos, g.diamonds)
-##      goals = set_p(a.pos, goals)
-#      #goals = get_goals(a, g)
-#      goals = update_priority(a, g, goals)
-#      solution.append(path[1:])
-#      print()
-## if trap dont remove for permutations 
-#    else:
-#      print(a.pos)
-#      if len(goals) > idx:
-#        print('SWAP DONE')
-#        goals[idx].h += 100//(idx+1)
-#        goals = update_priority(a, g, goals)
-##        goals = get_goals(a, g)
-##        idx = 0
-##        solution = []
-#
-#    print()
-#
-#  fp, s, d, f, pos, key, trap = a_star(g, a, game.g_pos)
-#  solution.append(fp[1:])
+#        goals[idx].h2 += 10*(idx+1)
+#        idx += 1
+#      goals = set_goals_diamonds(a.pos, g.diamonds)
+
+      print('NEW pos', a.pos)
+#      goals = set_goals_diamonds(a.pos, g.diamonds)
+#      goals = set_p(a.pos, goals)
+      #goals = get_goals(a, g)
+      print('############################## BEF update in if path ', len(goals), ' ######################')
+      goals = update_priority(a, g, goals)
+      print('############################## update in if path ', len(goals), ' ######################')
+      solution.append(path[1:])
+      print()
+# if trap dont remove for permutations 
+    else:
+      print(a.pos)
+      if len(goals) > idx:
+        print('SWAP DONE')
+        goals[idx].h2 += 10
+        print('############################## BEF update in if NOT path ', len(goals), ' ######################')
+        goals = update_priority(a, g, goals)
+        print('############################## update in if NOT path ', len(goals), ' ######################')
+#        goals = get_goals(a, g)
+#        idx = 0
+#        solution = []
+
+    print()
+
+  fp, s, d, f, pos, key, trap = a_star(g, a, game.g_pos)
+  solution.append(fp[1:])
 
   return solution
 
