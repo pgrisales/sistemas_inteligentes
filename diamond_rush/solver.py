@@ -12,8 +12,7 @@ class Goal:
     self.type = type_char
     self.trap = False
     self.parent = parent
-#    self.childs = childs
-    self.childs = order_goals(childs)
+    self.childs = childs
     self.visited = visited
     self.path = []
     self.agent = agent
@@ -25,21 +24,25 @@ class Goal:
   def __lt__(self, other):
     return self.h < other.h
 
-  def order_goals(self, childs):
-    if self.agent.has_key:
-      keys = []
-      for idx, i in enumerate(childs):
-        if childs[idx] == 'k':
-          keys.append(childs.remove(childs[idx]))
-      for i in keys:
-        childs.append(i)
-     # Alternate diamond-key Order
+def order_goals(childs, agent):
+  print('###########################################################################################')
+  print('antes len: ', len(childs))
+  if agent.has_key:
+    keys = []
+    for idx, i in enumerate(childs):
+      if childs[idx].type == 'k':
+        keys.append(childs.remove(childs[idx]))
+    for i in keys:
+      childs.append(i)
+   # Alternate diamond-key Order
 #    else:
 #      for idx in range(childs-2):
 #        if childs[idx] == 'k' and childs[idx+1] == 'k' 
 #          childs = childs
-
-    return childs
+  print('###########################################################################################')
+  print('new len: ', len(childs))
+#  sys.exit('e')
+  return childs
 
 def h(src, goal):
   return abs(src[0] - goal[0]) +  abs(src[1] - goal[1])  
@@ -167,6 +170,7 @@ def make_path(agent, game, src, goals, visited_trap=set()):
 
     current = copy.deepcopy(src)
     current.childs = goals
+    current.childs = order_goals(current.childs, current.agent)
 
     print('visitados ', current.visited)
     if goals[idx].pos not in current.visited or len(goals) == 1:
@@ -234,8 +238,8 @@ def make_path(agent, game, src, goals, visited_trap=set()):
             current = current.parent
 
           visited_trap.add(current.pos)
-#      goals = get_goals(current.agent, current.game)
           current.childs = current.childs[idx+1:] + [current.childs[idx]]
+          current.childs = order_goals(current.childs, current.agent)
           for i in current.childs:
             print(i.pos, i.h)
           print('$$$$$$$$$$$$$$$$$$$$$$4 order after backtracking ###########################3')
@@ -263,6 +267,7 @@ def make_path(agent, game, src, goals, visited_trap=set()):
       visited_trap.add(current.pos)
 #      goals = get_goals(current.agent, current.game)
       current.childs = current.childs[idx+1:] + [current.childs[idx]]
+      current.childs = order_goals(current.childs, current.agent)
       for i in current.childs:
         print(i.pos, i.h)
       print('$$$$$$$$$$$$$$$$$$$$$$4 order after backtracking ###########################3')
