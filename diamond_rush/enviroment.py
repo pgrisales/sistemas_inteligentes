@@ -3,7 +3,7 @@ from game import Game
 from rules import rules, possible_actions
 from browser import Browser
 from capture import agent_pos
-from solver import solver
+from solver import solver, make_path
 
 def run(agent: Agent, move, game: Game):
   a_pos = agent.pos
@@ -35,25 +35,10 @@ class Env:
     a_pos = agent_pos(browser.get_board())
     agent = Agent(a_pos)
     game = Game(self.level-1, a_pos)
-#    print(len(game.possible_actions(agent, game)))
-    solution = solver(game, agent)
-    moves = []
 
-# TODO: unpack
-    for i in solution:
-      for j in i:
-        moves.append(j[0])
-#        print(j[1])
+    moves = solver(game, agent)
 
     browser.move(moves)
-    i = 1
-#    while not game.finish:
-##      print(game.state)
-#      run(agent, agent.testRules(), game)
-#      print('##### ', len(game.diamonds) , ' ####')
-#      print('##### ', agent.pos , ' ####')
-#      print('##### Number of iterations: ', i, ' ####')
-#      i += 1
 
   def start(self):
     #i = [5,2]
@@ -69,5 +54,3 @@ class Env:
       print('##### ', i, ' ####')
       i += 1
 
-#env = Env()
-#env.start()

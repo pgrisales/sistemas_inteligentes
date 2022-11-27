@@ -3,6 +3,8 @@
 #from heapq import heappush, heappop
 from rules import rules, possible_actions
 
+import sys
+import copy
 # Diamond heuristic
 def h_d(src, goal):
   pass
@@ -40,15 +42,18 @@ class Node():
     pa = possible_actions(self.state, self.level, self.goal, self.diamonds, self.finish, self.pos, self.key)
     childs = []
     for k, v in pa.items():
-      child = Node(self, v[1], k, v[0], self.level, self.goal, self.diamonds, self.finish, self.key)
+      child = Node(self, v[1], k, v[0], self.level, self.goal, v[2], v[3], v[4])
+
       childs.append(child)
     return childs 
 
   def __eq__(self, other):
     return self.pos[0] == other.pos[0] and self.pos[1] == other.pos[1]
-#    return self.pos == other.pos
 
-def a_star(game, agent, end):
+def a_star(o_g, o_a, end):
+
+  agent = copy.deepcopy(o_a)
+  game = copy.deepcopy(o_g)
 
   k =  agent.has_key
   s = game.state
@@ -74,8 +79,9 @@ def a_star(game, agent, end):
   # Loop until you find the end
   while len(open_list) > 0:
     count += 1
-    if count == 160:
-      return None
+    if count == 150:
+      print('shit case')
+      return [], o_g.state, o_g.diamonds, o_g.finish, o_a.pos, o_a.has_key, False 
     # Get the current node
     current_node = open_list[0]
     current_index = 0
@@ -88,19 +94,26 @@ def a_star(game, agent, end):
     open_list.pop(current_index)
     closed_list.append(current_node)
 
-    # Found the goal
+    # Goal found
     # Fix tuple and list output -> use just one
-#    print('Are equal? ', type(current_node.pos), type(end_node.pos))
     if current_node == end_node:
+      trap = False
       path = []
       current = current_node
       t = current_node
       while current is not None:
 #        print('current node: ', current.pos)
         path.append([current.direction, current.pos])
+        if current.parent is not None:
+          past = current.parent.state[current.pos[0], current.pos[1]]
+
+          if past == 'r' or past == 's' or past == 'R':
+            trap = True
+
         current = current.parent
       # reversed path
-      return path[::-1], t.state, t.diamonds, t.finish, t.pos, t.key
+#      print('Good case')
+      return path[::-1], t.state, t.diamonds, t.finish, t.pos, t.key, trap
 
     # Generate children
     children = []
@@ -120,13 +133,23 @@ def a_star(game, agent, end):
         if child == closed_child:
           continue
 #            print('current node: ', current_node.pos)
+#      if child.parent.state[child.pos[0], child.pos[1]] == 'd':
+#        print('#################################')
+#        print('DIAMANDA ADJACENTE')
+#        child.g -= 1
 
       # Create the f, g, and h values
       child.g = current_node.g + 1
       child.h = h(child, end_node)
-      print(child.state)
+      #print(child.state)
       #print(child.pos, child.h)
       child.f = child.g + child.h
+
+# Test incentiva ir hacia diamante cerca en el camino, parece que funciona en el level 2
+#      if child.parent.state[child.pos[0], child.pos[1]] == 'd':
+#        print('#################################')
+#        print('DIAMANDA ADJACENTE')
+#        child.g -= 1
 
       # Child is already in the open list
       for open_node in open_list:

@@ -33,6 +33,7 @@
 
 # TODO: replace all key-agent interactions with this function
 import copy
+import sys
 
 def left(pos):
   return [pos[0], pos[1] - 1] 
@@ -62,7 +63,7 @@ def possible_actions(g_state, g_level, g_goal, g_diamonds, g_finish, pos, a_key)
 
   #return state, diamonds, finish, moved, (ni, nj), key
     s, d, f, moved, n_pos, k = rules(state, level, goal, diamonds, finish, pos,  v, key)
-    moves[kd] = [s, actions[kd]]
+    moves[kd] = [s, actions[kd], d, f, k]
 #      print('pos after: ', a2.pos)
     if not moved:
       del moves[kd]
@@ -154,6 +155,15 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
   if state[ni,nj] == 's':       # spike
     state[ni,nj] = 'A'
     moved = True
+# Done
+  elif (ni,nj) in B:     # bDoor
+    idx = B.index((ni, nj))
+    bi, bj = b[idx]
+    if state[bi ,bj] != 'b':
+      state[ni, nj] = 'a'
+      moved = True
+    else:
+      state[i, j] = a_state
 
 # Done
   elif state[ni,nj] == 'p':     # path
@@ -196,6 +206,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
     if key:
       state[ni,nj] = 'a'
       moved = True
+      key = False
     else:
       state[i, j] = a_state
 
@@ -465,15 +476,6 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
     idx = b.index((ni, nj))
     state[B[idx]] = 'p'
 
-# Done
-  elif state[ni,nj] == 'B':     # bDoor
-    idx = B.index((ni, nj))
-    bi, bj = b[idx]
-    if state[bi ,bj] != 'b':
-      state[ni, nj] = 'a'
-      moved = True
-    else:
-      state[i, j] = a_state
 
   else:
     print(state)
