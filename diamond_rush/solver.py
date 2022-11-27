@@ -12,7 +12,8 @@ class Goal:
     self.type = type_char
     self.trap = False
     self.parent = parent
-    self.childs = childs
+#    self.childs = childs
+    self.childs = order_goals(childs)
     self.visited = visited
     self.path = []
     self.agent = agent
@@ -20,6 +21,25 @@ class Goal:
 
   def __eq__(self, other):
     return self.pos[0] == other.pos[0] and self.pos[1] == other.pos[1]
+
+  def __lt__(self, other):
+    return self.h < other.h
+
+  def order_goals(self, childs):
+    if self.agent.has_key:
+      keys = []
+      for idx, i in enumerate(childs):
+        if childs[idx] == 'k':
+          keys.append(childs.remove(childs[idx]))
+      for i in keys:
+        childs.append(i)
+     # Alternate diamond-key Order
+#    else:
+#      for idx in range(childs-2):
+#        if childs[idx] == 'k' and childs[idx+1] == 'k' 
+#          childs = childs
+
+    return childs
 
 def h(src, goal):
   return abs(src[0] - goal[0]) +  abs(src[1] - goal[1])  
@@ -82,15 +102,13 @@ def set_priority(agent, *args):
         i.h += h(agent.pos, i.pos) + i.h2
       elif i.type == 'k':
         i.h += h(agent.pos, i.pos) + i.h2
-        if agent.has_key:
-          i.h += 10
+#        if agent.has_key:
+#          i.h += 10
       elif i.type == 'b':
         i.h += h(agent.pos, i.pos) + i.h2 + 8
       elif i.type == 'h':
         i.h += h(agent.pos, i.pos) + i.h2 + 8
-      for j in range(idx):
-        if goals[idx].h < goals[j].h:
-            goals = goals[:j] + [goals[j]] + goals[j:]
+  goals.sort(key=lambda x: x.h)          
 
   return goals
 
@@ -119,7 +137,7 @@ def make_path(agent, game, src, goals, visited_trap=set()):
 
   print()
   for z in goals:
-    print(z.pos, z.h)
+    print(z.pos, z.h, z.type)
   print('---------------------- still to getem --------------------------------')
 
   while not g.finish:
@@ -134,17 +152,16 @@ def make_path(agent, game, src, goals, visited_trap=set()):
         print('parent: ', src.parent.pos)
         print(src.path)
 
-        #solution.append(src.path[-1][::-1])
         solution.append(src.path)
         src = src.parent
 
       solution.reverse()
       solution.append(fp[1:])
-      print()
-      for i in solution:
-        print(i)
-      print(len(solution))
-      print('********** solution final *****')
+#      print()
+#      for i in solution:
+#        print(i)
+#      print(len(solution))
+#      print('********** solution final *****')
 
       return solution
 
@@ -264,6 +281,10 @@ def solver(game, agent) :
   solution = []
 
   goals = get_goals(a, g)
+  for i in goals:
+    print(i.pos, i.h, i.type)
+
+#  sys.exit('exit')
   solution = make_path(a, g, src, goals)
   print(len(solution))
   moves = []
@@ -275,7 +296,6 @@ def solver(game, agent) :
     for j in i:
       print(j[0])
       moves.append(j[0])
-#  print('moves len: ', len(moves))
-#  sys.exit('die')
+
   return moves 
 
