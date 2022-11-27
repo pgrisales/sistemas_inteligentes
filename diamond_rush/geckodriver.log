@@ -4384,3 +4384,208 @@ JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData 
 1669153939957	Marionette	INFO	Stopped listening on port 46519
 console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
 Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+update.go:85: cannot change mount namespace according to change mount (/var/lib/snapd/hostfs/usr/share/cups/doc-root /usr/share/cups/doc-root none bind,ro 0 0): cannot create directory "/usr/share/cups/doc-root": permission denied
+update.go:85: cannot change mount namespace according to change mount (/var/lib/snapd/hostfs/usr/share/gimp/2.0/help /usr/share/gimp/2.0/help none bind,ro 0 0): cannot create directory "/usr/share/gimp/2.0": permission denied
+update.go:85: cannot change mount namespace according to change mount (/var/lib/snapd/hostfs/usr/share/gtk-doc /usr/share/gtk-doc none bind,ro 0 0): cannot open directory "/var/lib": permission denied
+update.go:85: cannot change mount namespace according to change mount (/var/lib/snapd/hostfs/usr/share/libreoffice/help /usr/share/libreoffice/help none bind,ro 0 0): cannot create directory "/usr/share/libreoffice/help": permission denied
+update.go:85: cannot change mount namespace according to change mount (/var/lib/snapd/hostfs/usr/share/xubuntu-docs /usr/share/xubuntu-docs none bind,ro 0 0): cannot open directory "/var/lib": permission denied
+1669572767244	geckodriver	INFO	Listening on 127.0.0.1:38573
+1669572767814	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "35105" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileYBVj9c"
+Gtk-Message: 13:12:47.850: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1669572769113	Marionette	INFO	Marionette enabled
+1669572769118	Marionette	INFO	Listening on port 37503
+Read port: 37503
+ATTENTION: default value of option mesa_glthread overridden by environment.
+WebDriver BiDi listening on ws://127.0.0.1:35105
+1669572769346	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileYBVj9c/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:35105/devtools/browser/0b02f948-f5db-4297-a25b-38a2d6f621be
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+WARNING: Kernel has no file descriptor comparison support: Operation not permitted
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1669572804413	Marionette	INFO	Stopped listening on port 37503
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1669572811199	geckodriver	INFO	Listening on 127.0.0.1:54359
+1669572811656	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "34837" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileEVYBDR"
+Gtk-Message: 13:13:31.683: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1669572812354	Marionette	INFO	Marionette enabled
+1669572812357	Marionette	INFO	Listening on port 41089
+ATTENTION: default value of option mesa_glthread overridden by environment.
+WebDriver BiDi listening on ws://127.0.0.1:34837
+Read port: 41089
+1669572812635	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileEVYBDR/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:34837/devtools/browser/5ae093f7-e48b-4c43-8aa2-74b55c24b731
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+WARNING: Kernel has no file descriptor comparison support: Operation not permitted
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1669572849806	Marionette	INFO	Stopped listening on port 41089
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1669573542852	geckodriver	INFO	Listening on 127.0.0.1:54625
+1669573543309	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "47591" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileFa1HYb"
+Gtk-Message: 13:25:43.336: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1669573543998	Marionette	INFO	Marionette enabled
+1669573544002	Marionette	INFO	Listening on port 43857
+Read port: 43857
+ATTENTION: default value of option mesa_glthread overridden by environment.
+WebDriver BiDi listening on ws://127.0.0.1:47591
+1669573544122	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileFa1HYb/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:47591/devtools/browser/73fcc7ee-92a6-40b0-83f0-1e70dd83c34a
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+WARNING: Kernel has no file descriptor comparison support: Operation not permitted
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+1669573572387	Marionette	INFO	Stopped listening on port 43857
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1669574054369	geckodriver	INFO	Listening on 127.0.0.1:43935
+1669574054808	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "47953" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofiledO7haQ"
+Gtk-Message: 13:34:14.837: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1669574055568	Marionette	INFO	Marionette enabled
+1669574055573	Marionette	INFO	Listening on port 37687
+Read port: 37687
+ATTENTION: default value of option mesa_glthread overridden by environment.
+WebDriver BiDi listening on ws://127.0.0.1:47953
+1669574055775	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofiledO7haQ/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:47953/devtools/browser/9f41c7a0-2df3-4ac4-ae06-72cbeaeced0e
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+WARNING: Kernel has no file descriptor comparison support: Operation not permitted
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1669574076015	geckodriver	INFO	Listening on 127.0.0.1:35071
+1669574076472	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "42181" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileb7xYg9"
+Gtk-Message: 13:34:36.500: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1669574077163	Marionette	INFO	Marionette enabled
+1669574077167	Marionette	INFO	Listening on port 37439
+Read port: 37439
+ATTENTION: default value of option mesa_glthread overridden by environment.
+WebDriver BiDi listening on ws://127.0.0.1:42181
+1669574077310	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileb7xYg9/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:42181/devtools/browser/9ae1a91f-91ad-49b8-a092-68d878b36a85
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+WARNING: Kernel has no file descriptor comparison support: Operation not permitted
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1669574324636	geckodriver	INFO	Listening on 127.0.0.1:38895
+1669574325080	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "49433" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileCyCKOS"
+Gtk-Message: 13:38:45.107: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1669574325799	Marionette	INFO	Marionette enabled
+1669574325803	Marionette	INFO	Listening on port 43613
+ATTENTION: default value of option mesa_glthread overridden by environment.
+Read port: 43613
+WebDriver BiDi listening on ws://127.0.0.1:49433
+1669574325969	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileCyCKOS/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:49433/devtools/browser/2d2cfb4f-4851-4a4e-826b-4523949975e6
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+WARNING: Kernel has no file descriptor comparison support: Operation not permitted
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1669574586446	geckodriver	INFO	Listening on 127.0.0.1:43921
+1669574586893	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "45177" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileolpVpH"
+Gtk-Message: 13:43:06.920: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1669574587607	Marionette	INFO	Marionette enabled
+1669574587611	Marionette	INFO	Listening on port 39175
+ATTENTION: default value of option mesa_glthread overridden by environment.
+Read port: 39175
+WebDriver BiDi listening on ws://127.0.0.1:45177
+1669574587778	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileolpVpH/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:45177/devtools/browser/d84a81c6-d64b-4846-a335-a719f4889dbd
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+WARNING: Kernel has no file descriptor comparison support: Operation not permitted
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1669574903308	geckodriver	INFO	Listening on 127.0.0.1:38059
+1669574903752	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "40419" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilevwic1V"
+Gtk-Message: 13:48:23.781: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1669574904510	Marionette	INFO	Marionette enabled
+1669574904514	Marionette	INFO	Listening on port 41345
+Read port: 41345
+ATTENTION: default value of option mesa_glthread overridden by environment.
+WebDriver BiDi listening on ws://127.0.0.1:40419
+1669574904698	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilevwic1V/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:40419/devtools/browser/aec7e555-4498-436e-9811-823807d4fe39
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+WARNING: Kernel has no file descriptor comparison support: Operation not permitted
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+1669575512662	geckodriver	INFO	Listening on 127.0.0.1:33847
+1669575513116	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "37059" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileqnXY9n"
+Gtk-Message: 13:58:33.145: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1669575513833	Marionette	INFO	Marionette enabled
+1669575513837	Marionette	INFO	Listening on port 33633
+ATTENTION: default value of option mesa_glthread overridden by environment.
+Read port: 33633
+WebDriver BiDi listening on ws://127.0.0.1:37059
+1669575514011	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileqnXY9n/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:37059/devtools/browser/53ef8859-4e80-4b54-805f-1449e1843d1f
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+WARNING: Kernel has no file descriptor comparison support: Operation not permitted
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1669575881305	geckodriver	INFO	Listening on 127.0.0.1:35433
+1669575881753	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "--remote-debugging-port" "39897" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilex5AkuE"
+Gtk-Message: 14:04:41.781: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1669575882465	Marionette	INFO	Marionette enabled
+1669575882469	Marionette	INFO	Listening on port 37527
+ATTENTION: default value of option mesa_glthread overridden by environment.
+Read port: 37527
+WebDriver BiDi listening on ws://127.0.0.1:39897
+1669575882655	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilex5AkuE/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:39897/devtools/browser/eddb0902-a614-4ffa-8c36-a4726027fcfd
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+WARNING: Kernel has no file descriptor comparison support: Operation not permitted
+JavaScript warning: https://ssl.minijuegosgratis.com/lechuck/js/latest.js, line 27: unreachable code after return statement
+JavaScript error: , line 0: EncodingError: The buffer passed to decodeAudioData contains an unknown content type.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
