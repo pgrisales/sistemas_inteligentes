@@ -3,27 +3,10 @@ class Agent:
     self.pos = agent_pos 
     self.has_key = False
     self.count = 0
-    self.l0 = 'rrrrrdddlllllddrdrrrrd'
-    self.l10 = 'ulrrdllddrdrrurddrruudddduullrlullllddddrrrrlrllllddrrrruuurrurldlldddrrrllluuuurdruuuuddlldddrlddrruuuuuuuuulll'
-    self.l11 = 'lrrrdrrudrddddddduulrddlruullddrdllluuullldddrrruuulluuulrurrdrrrrdddddd'
     self.actions = { 'l': self.left, 'r': self.right, 'u': self.up, 'd': self.down }
   
   def die(self):
     pass
-
-  def testRules(self):
-    if self.l11[self.count] == 'l':
-      self.count += 1
-      return self.left()
-    elif self.l11[self.count] == 'r':
-      self.count += 1
-      return self.right()
-    elif self.l11[self.count] == 'u':
-      self.count += 1
-      return self.up()
-    elif self.l11[self.count] == 'd':
-      self.count += 1
-      return self.down()
     
   def compute(self):
     from random import randint
@@ -47,11 +30,10 @@ class Agent:
     return i, j 
 
   def left(self):
-    return [self.pos[0], self.pos[1] - 1] 
+    return [self.pos[0], self.pos[1] - 1]
   def right(self):
-    return [self.pos[0], self.pos[1] + 1] 
+    return [self.pos[0], self.pos[1] + 1]
   def up(self):
-    return [self.pos[0] - 1, self.pos[1]] 
+    return [self.pos[0] - 1, self.pos[1]]
   def down(self):
-    return [self.pos[0] + 1, self.pos[1]] 
-
+    return [self.pos[0] + 1, self.pos[1]]
