@@ -23,10 +23,6 @@ def play(moves):
     elif d == 'd':
       move(Key.down)
 
-#l0 = 'rrrrrdddlllllddrdrrrrd'
-
 l10 = 'ulrrdllddrdrrurddrruudddduullrlullllddddrrrrlrllllddrrrruuurrurldlldddrrrllluuuurdruuuuddlldddrlddrruuuuuuuuulll'
 l11 = 'lrrrdrrudrddddddduulrddlruullddrdllluuullldddrrruuulluuulrurrdrrrrdddddd'
 play(l11)
-
-
