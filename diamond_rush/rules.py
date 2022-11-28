@@ -62,8 +62,8 @@ def possible_actions(g_state, g_level, g_goal, g_diamonds, g_finish, pos, a_key)
     goal = copy.deepcopy(g_goal)
 
   #return state, diamonds, finish, moved, (ni, nj), key
-    s, d, f, moved, n_pos, k = rules(state, level, goal, diamonds, finish, pos,  v, key)
-    moves[kd] = [s, actions[kd], d, f, k]
+    s, d, f, moved, n_pos, k, t = rules(state, level, goal, diamonds, finish, pos,  v, key)
+    moves[kd] = [s, actions[kd], d, f, k, t]
 #      print('pos after: ', a2.pos)
     if not moved:
       del moves[kd]
@@ -84,6 +84,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
 
   moved = False
   state = state
+  trap = False
   i, j = a_pos
 #  ni, nj = agent.testRules()
   ni, nj = a_move
@@ -184,11 +185,13 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
     elif state[nri, nrj] == 'l':
       state[ni, nj] = 'a'
       moved = True
+      trap = True
 
     elif state[nri, nrj] == 'h':
       state[ni, nj] = 'a'
       moved = True
       state[nri, nrj] = 'p'
+      trap = True
 
     elif state[nri, nrj] == 'b':
       state[ni, nj] = 'a'
@@ -196,26 +199,31 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       idx = b.index((nri, nrj))
       state[B[idx]] = 'p'
       state[nri, nrj] = 'o'
+      trap = True
 
     elif state[nri, nrj] == 's':
       state[ni, nj] = 'a'
       moved = True
       state[nri, nrj] = 'R'
+      trap = True
 
     elif state[nri, nrj] == 'k': 
       state[ni, nj] = 'a'
       moved = True
       state[nri, nrj] = 'Q'
+      trap = True
       
     elif state[nri, nrj] == 'd':
       state[ni, nj] = 'a'
       moved = True
       state[nri, nrj] = 'D'
+      trap = True
 
     else:
       state[ni, nj] = 'a'
       moved = True
       state[nri, nrj] = 'r'
+      trap = True
 
 # Done I think!
   elif state[ni,nj] == 'Q':     # rock over key
@@ -225,6 +233,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       state[i, j] = a_state
 
     elif state[nri, nrj] == 'l':
+      trap = True
       if key:
         state[ni,nj] = '@' 
         moved = True
@@ -234,6 +243,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
         moved = True
 
     elif state[nri, nrj] == 'h':
+      trap = True
       if key:
         state[ni,nj] = '@' 
         moved = True
@@ -244,6 +254,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       state[nri, nrj] = 'p'
 
     elif state[nri, nrj] == 'b':
+      trap = True
       if key:
         state[ni,nj] = '@' 
         moved = True
@@ -256,6 +267,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       state[nri, nrj] = 'o'
 
     elif state[nri, nrj] == 's':
+      trap = True
       if key:
         state[ni,nj] = '@' 
         moved = True
@@ -266,6 +278,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       state[nri, nrj] = 'R'
 
     elif state[nri, nrj] == 'k': 
+      trap = True
       if key:
         state[ni,nj] = '@' 
         moved = True
@@ -276,6 +289,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       state[nri, nrj] = 'Q'
       
     elif state[nri, nrj] == 'd':
+      trap = True
       if key:
         state[ni,nj] = '@' 
         moved = True
@@ -303,6 +317,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       state[i, j] = a_state
 
     elif state[nri, nrj] == 'l':
+      trap = True
       state[ni, nj] = 'A'
       moved = True
 
@@ -310,6 +325,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       state[ni, nj] = 'A'
       moved = True
       state[nri, nrj] = 'p'
+      trap = True
 
     elif state[nri, nrj] == 'b':
       state[ni, nj] = 'A'
@@ -317,21 +333,25 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       idx = b.index((nri, nrj))
       state[B[idx]] = 'p'
       state[nri, nrj] = 'o'
+      trap = True
 
     elif state[nri, nrj] == 's':
       state[ni, nj] = 'A'
       moved = True
       state[nri, nrj] = 'R'
+      trap = True
       
     elif state[nri, nrj] == 'd':
       state[ni, nj] = 'A'
       moved = True
       state[nri, nrj] = 'D'
+      trap = True
 
     elif state[nri, nrj] == 'k': 
       state[ni, nj] = 'A'
       moved = True
       state[nri, nrj] = 'Q'
+      trap = True
 
     else:
       state[ni, nj] = 'a'
@@ -348,6 +368,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
     elif state[nri, nrj] == 'l':
       state[ni, nj] = '_'
       moved = True
+      trap = True
 
     elif state[nri, nrj] == 'h':
       state[ni, nj] = '_'
@@ -355,6 +376,7 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       idx = b.index((ni, nj))
       state[B[idx]] = 'p'
       state[nri, nrj] = 'p'
+      trap = True
 
     elif state[nri, nrj] == 'b':
       state[ni, nj] = '_'
@@ -362,26 +384,31 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       idx = b.index((nri, nrj))
       state[B[idx]] = 'p'
       state[nri, nrj] = 'o'
+      trap = True
 
     elif state[nri, nrj] == 's':
       state[ni, nj] = '_'
       moved = True
       state[nri, nrj] = 'R'
+      trap = True
       
     elif state[nri, nrj] == 'd':
       state[ni, nj] = '_'
       moved = True
       state[nri, nrj] = 'D'
+      trap = True
 
     elif state[nri, nrj] == 'k': 
       state[ni, nj] = '_'
       moved = True
       state[nri, nrj] = 'Q'
+      trap = True
 
     else:
       state[ni, nj] = 'a'
       moved = True
       state[nri, nrj] = 'r'
+      trap = True
 
 # Done
   elif state[ni,nj] == 'D':     # rock over diamond
@@ -394,12 +421,14 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       state[ni, nj] = 'a'
       moved = True
       diamonds.remove((ni, nj))
+      trap = True
 
     elif state[nri, nrj] == 'h':
       state[ni, nj] = 'a'
       moved = True
       diamonds.remove((ni, nj))
       state[nri, nrj] = 'p'
+      trap = True
 
     elif state[nri, nrj] == 'b':
       state[ni, nj] = 'a'
@@ -408,24 +437,28 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
       idx = b.index((nri, nrj))
       state[B[idx]] = 'p'
       state[nri, nrj] = 'o'
+      trap = True
 
     elif state[nri, nrj] == 's':
       state[ni, nj] = 'a'
       moved = True
       diamonds.remove((ni, nj))
       state[nri, nrj] = 'R'
+      trap = True
       
     elif state[nri, nrj] == 'd':
       state[ni, nj] = 'a'
       moved = True
       diamonds.remove((ni, nj))
       state[nri, nrj] = 'D'
+      trap = True
 
     elif state[nri, nrj] == 'k': 
       state[ni, nj] = 'a'
       moved = True
       diamonds.remove((ni, nj))
       state[nri, nrj] = 'Q'
+      trap = True
 
     else:
       state[ni, nj] = 'a'
@@ -447,5 +480,4 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
     print(state[i,j])
     print('##################### rules not working #######################')
 
-  return state, diamonds, finish, moved, (ni, nj), key
-# rules(state, diamonds, finish, a_pos, a_move, key)
+  return state, diamonds, finish, moved, (ni, nj), key, trap

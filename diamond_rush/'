@@ -17,7 +17,7 @@ class Node():
   def __init__(self, parent=None, pos=None, 
               direction=None, state=None,
               level=None, goal=None,
-              diamonds=None, finish=None, key=None, trap=None):
+              diamonds=None, finish=None, key=None):
     self.parent = parent
     self.pos = pos
 
@@ -28,7 +28,6 @@ class Node():
     self.diamonds = diamonds
     self.finish = finish
     self.key = key
-    self.trap = trap
 
     self.g = 0
     self.h = 0
@@ -38,7 +37,7 @@ class Node():
     pa = possible_actions(self.state, self.level, self.goal, self.diamonds, self.finish, self.pos, self.key)
     childs = []
     for k, v in pa.items():
-      child = Node(self, v[1], k, v[0], self.level, self.goal, v[2], v[3], v[4], v[5])
+      child = Node(self, v[1], k, v[0], self.level, self.goal, v[2], v[3], v[4])
 
       childs.append(child)
     return childs 
@@ -81,8 +80,8 @@ def a_star(o_g, o_a, end):
     count += 1
 #    if count == 150:
 #    if count == 1550:
-#    if count == 150:
-    if count == 250:
+    if count == 150:
+#    if count == 2000:
       print('shit case')
       return [], o_g.state, o_g.diamonds, o_g.finish, o_a.pos, o_a.has_key, False 
     # Get the current node
@@ -101,10 +100,7 @@ def a_star(o_g, o_a, end):
     if g_type == 'h' or g_type == 'b':
 
       if current_node.state[end_node.pos[0], end_node.pos[1]] == 'p':
-        if end_node.pos == (12,3) or end_node.pos == (11,6):
-          print(end_node.pos)
-          print('----------------------------- shit working ------------------------------------')
-#          sys.exit('terminando hole')
+        sys.exit('terminando hole')
         trap = False
         path = []
         current = current_node
@@ -215,7 +211,7 @@ def a_star(o_g, o_a, end):
       for open_node in open_list:
         if child == open_node and child.g > open_node.g:
           # Pa no incentivar la busqueda en nodos ya visitados
-          open_node.g += 1
+#          open_node.g += 1
           continue
 
       # Add the child to the open list

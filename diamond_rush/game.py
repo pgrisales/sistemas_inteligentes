@@ -35,7 +35,8 @@ def rocks_pos(state):
   pos = []
   for i in range(len(state)):
     for j in range(len(state[0])):
-      if state[i,j] == 'r' or state[i,j] == 'R' or state[i,j] == 'o' or state[i,j] == 'D' or state[i,j] == 'Q':
+#      if state[i,j] == 'r' or state[i,j] == 'R' or state[i,j] == 'o' or state[i,j] == 'D' or state[i,j] == 'Q':
+      if state[i,j] == 'r' or state[i,j] == 'R':# or state[i,j] == 'o' or state[i,j] == 'D' or state[i,j] == 'Q':
         pos.append((i,j))
   return pos 
 
