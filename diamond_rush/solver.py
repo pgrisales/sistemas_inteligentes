@@ -165,7 +165,7 @@ count = 0
 def make_path(agent, game, src, goals, visited_trap=set()):
   global count
   count += 1
-  print(count)
+  #print(count)
   a = agent
   g = game
 
@@ -176,10 +176,10 @@ def make_path(agent, game, src, goals, visited_trap=set()):
   
 #  goals = copy.deepcopy(goals)
 
-  print()
-  for z in goals:
-    print(z.pos, z.h, z.type, '    a.key: ', agent.has_key)
-  print('---------------------- still to getem --------------------------------')
+  #print()
+  #for z in goals:
+  #  print(z.pos, z.h, z.type, '    a.key: ', agent.has_key)
+  #print('---------------------- still to getem --------------------------------')
 
   while not g.finish:
     if len(goals) == 0:
@@ -188,10 +188,10 @@ def make_path(agent, game, src, goals, visited_trap=set()):
       fp, s, d, f, pos, key, trap = a_star(g, a, game.g_pos)
 
       while src.parent is not None:
-        print('------------------------ boy has parent ---------------------------------')
-        print('child: ', src.pos)
-        print('parent: ', src.parent.pos)
-        print(src.path)
+        #print('------------------------ boy has parent ---------------------------------')
+        #print('child: ', src.pos)
+        #print('parent: ', src.parent.pos)
+        #print(src.path)
 
         solution.append(src.path)
         src = src.parent
@@ -210,17 +210,17 @@ def make_path(agent, game, src, goals, visited_trap=set()):
     current.childs = goals
     current.childs = order_goals(current.childs, current.agent)
 
-    print('visitados ', current.visited)
+    #print('visitados ', current.visited)
     if goals[idx].pos not in current.visited or len(goals) == 1:
-      print('############ src: ', a.pos, ' ###############')
-      print('############ end: ', goals[idx].pos, goals[idx].h, goals[idx].type, ' ###############')
+      #print('############ src: ', a.pos, ' ###############')
+      #print('############ end: ', goals[idx].pos, goals[idx].h, goals[idx].type, ' ###############')
       path, g.state, g.diamonds, g.finish, a.pos, a.has_key, trap = a_star(g, a, goals[idx].pos)
-      print()
-      print('src with ', src.pos, src.h)
-      print('a.pos with ', a.pos)
-      print('path with ', goals[idx].pos, goals[idx].h)
+      #print()
+      #print('src with ', src.pos, src.h)
+      #print('a.pos with ', a.pos)
+      #print('path with ', goals[idx].pos, goals[idx].h)
 #      print(path)
-      print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+      #print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
       
       if len(path) > 0:
 #        visited.add(goals[idx].pos)
@@ -231,7 +231,7 @@ def make_path(agent, game, src, goals, visited_trap=set()):
         temp.trap = trap
 #        temp.visited = src.visited
         temp.visited = set()
-        print(count, ' idx ', idx , 'src ', src.pos, ' kid ', temp.pos)
+        #print(count, ' idx ', idx , 'src ', src.pos, ' kid ', temp.pos)
         temp.parent = current 
 
         new_order = get_goals(temp.agent, temp.game)
@@ -245,59 +245,59 @@ def make_path(agent, game, src, goals, visited_trap=set()):
       else:
         current.visited.add(goals[idx].pos)
 
-        print('else case:')
-        print(current.visited)
+        #print('else case:')
+        #print(current.visited)
         if len(goals) > 1 and goals[idx+1].pos:# not in current.visited:
-          print('*********************************** SWAP ***********************************')
-          print(goals[idx].pos, goals[idx+1].pos)
+          #print('*********************************** SWAP ***********************************')
+          #print(goals[idx].pos, goals[idx+1].pos)
 
           goals = goals[idx+1:] + [goals[idx]]
           return make_path(current.agent, current.game, current, goals)
 #          return make_path(current.agent, current.game, current, current.childs)
         else:
-          print('%%%%%%%%%%%%%%%%%% backtrack parent %%%%%%%%%%%%%%%%%%%')
-          if current.parent:
-            print('child: ', current.pos, ' parent: ', current.parent.pos)
+          #print('%%%%%%%%%%%%%%%%%% backtrack parent %%%%%%%%%%%%%%%%%%%')
+          #if current.parent:
+            #print('child: ', current.pos, ' parent: ', current.parent.pos)
           
           while current.parent:
-            print('child: ', current.pos, ' parent: ', current.parent.pos)
+            #print('child: ', current.pos, ' parent: ', current.parent.pos)
             if current.trap and current.parent.pos not in visited_trap:
-              print(current.pos)
+              #print(current.pos)
               break
             current.visited = set()
             current = current.parent
 
-          print('it breaks ok')
+          #print('it breaks ok')
           if current.parent and current.parent.pos not in visited_trap:
-            print(' child visited: ', current.visited)
-            print(' parent visited ', current.parent.visited)
+            #print(' child visited: ', current.visited)
+            #print(' parent visited ', current.parent.visited)
             current.visited = set()
             current = current.parent
 
           visited_trap.add(current.pos)
           current.childs = current.childs[idx+1:] + [current.childs[idx]]
           current.childs = order_goals(current.childs, current.agent)
-          for i in current.childs:
-            print(i.pos, i.h, i.type)
-          print('$$$$$$$$$$$$$$$$$$$$$$4 order after backtracking ###########################3')
+          #for i in current.childs:
+            #print(i.pos, i.h, i.type)
+          #print('$$$$$$$$$$$$$$$$$$$$$$4 order after backtracking ###########################3')
           return make_path(current.agent, current.game, current, current.childs, visited_trap)
     else:
-      print('%%%%%%%%%%%%%%%%%% backtrack parent %%%%%%%%%%%%%%%%%%%')
-      if current.parent:
-        print('child: ', current.pos, ' parent: ', current.parent.pos)
+      #print('%%%%%%%%%%%%%%%%%% backtrack parent %%%%%%%%%%%%%%%%%%%')
+      #if current.parent:
+        #print('child: ', current.pos, ' parent: ', current.parent.pos)
       
       while current.parent:
-        print('child: ', current.pos, ' parent: ', current.parent.pos)
+        #print('child: ', current.pos, ' parent: ', current.parent.pos)
         if current.trap and current.parent.pos not in visited_trap:
-          print(current.pos)
+          #print(current.pos)
           break
         current.visited = set()
         current = current.parent
 
-      print('it breaks ok')
+      #print('it breaks ok')
       if current.parent and current.parent.pos not in visited_trap:
-        print(' child visited: ', current.visited)
-        print(' parent visited ', current.parent.visited)
+        #print(' child visited: ', current.visited)
+        #print(' parent visited ', current.parent.visited)
         current.visited = set()
         current = current.parent
 
@@ -306,9 +306,9 @@ def make_path(agent, game, src, goals, visited_trap=set()):
       current.childs = current.childs[idx+1:] + [current.childs[idx]]
       goals = get_goals(current.agent, current.game)
 #      current.childs = order_goals(current.childs, current.agent)
-      for i in current.childs:
-        print(i.pos, i.h, i.type)
-      print('$$$$$$$$$$$$$$$$$$$$$$4 order after backtracking ###########################3')
+      #for i in current.childs:
+        #print(i.pos, i.h, i.type)
+      #print('$$$$$$$$$$$$$$$$$$$$$$4 order after backtracking ###########################3')
       return make_path(current.agent, current.game, current, current.childs, visited_trap)
 
     return []
@@ -322,16 +322,16 @@ def solver(game, agent) :
   solution = []
 
   goals = get_goals(agent, game)
-  for i in goals:
-    print(i.pos, i.h, i.type)
+  #for i in goals:
+    #print(i.pos, i.h, i.type)
 
   solution = make_path(agent, game, src, goals)
-  print(len(solution))
+  #print(len(solution))
   moves = []
 
-  print()
-  print()
-  print('final len ',len(solution))
+  #print()
+  #print()
+  #print('final len ',len(solution))
   for i in solution:
     for j in i:
       print(j[0])

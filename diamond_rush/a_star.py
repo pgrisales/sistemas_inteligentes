@@ -80,7 +80,7 @@ def a_star(o_g, o_a, end):
   while len(open_list) > 0:
     count += 1
     if count == 150:
-      print('shit case')
+      #print('shit case')
       return [], o_g.state, o_g.diamonds, o_g.finish, o_a.pos, o_a.has_key, False 
     # Get the current node
     current_node = open_list[0]

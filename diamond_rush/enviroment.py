@@ -14,10 +14,10 @@ def run(agent: Agent, move, game: Game):
   level = game.level
   goal = game.g_pos
   pa = possible_actions(state, level, diamonds, finish, a_pos, key)
-  print(a_pos)
-  for k, v in pa.items():
-    print(v[0])
-    print('Possible desicions: ', len(pa), v[1])
+  #print(a_pos)
+  #for k, v in pa.items():
+    #print(v[0])
+    #print('Possible desicions: ', len(pa), v[1])
   game.state, d, game.finish, moved, agent.pos, k = rules(state, level, goal, diamonds, finish, a_pos, move, key)
 
   return game.state
@@ -48,9 +48,9 @@ class Env:
     game = Game(tempL, i)
     i = 1
     while not game.finish:
-      print(run(agent, game))
-      print('##### ', len(game.diamonds) , ' ####')
-      print('##### ', agent.pos , ' ####')
-      print('##### ', i, ' ####')
+      #print(run(agent, game))
+      #print('##### ', len(game.diamonds) , ' ####')
+      #print('##### ', agent.pos , ' ####')
+      #print('##### ', i, ' ####')
       i += 1
 

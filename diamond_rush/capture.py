@@ -1,6 +1,7 @@
 import cv2 
 import numpy as np
 import os
+import sys
 
 levels_dir = './levels/'
 agent_dir = './blocks/agent/2.png'
@@ -26,7 +27,7 @@ def agent_pos(levelTemplate):
   matches = flann.knnMatch(des1,des2,k=2)
   good = []
   for m,n in matches:
-      if m.distance < 0.9*n.distance:
+      if m.distance < 0.94*n.distance:
         good.append(m)
 #  print(len(good))
   if len(good) > MIN_MATCH_COUNT:
@@ -54,11 +55,14 @@ def agent_pos(levelTemplate):
     print('agent position:', aPos)
 
 #    cv2.rectangle(level,tl,br , 255, 3)
-##    cv2.circle(level,tl,radius=0, color=(0,0,255), thickness=8)
+#    cv2.circle(level,tl,radius=0, color=(0,0,255), thickness=8)
 #    cv2.imshow('CROP', level)
 #    cv2.waitKey(0);cv2.destroyAllWindows()
 #    print('tl:',tl)
 #    print('lh:',lh)
 #    print('lw:',lw)
+#    print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+#    print(aPos)
+#    sys.exit("a")
     return aPos  
 

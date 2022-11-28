@@ -477,11 +477,11 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
     state[B[idx]] = 'p'
 
 
-  else:
-    print(state)
-    print(i, j)
-    print(state[i,j])
-    print('##################### rules not working #######################')
+  #else:
+    #print(state)
+    #print(i, j)
+    #print(state[i,j])
+    #print('##################### rules not working #######################')
 
   return state, diamonds, finish, moved, (ni, nj), key
 # rules(state, diamonds, finish, a_pos, a_move, key)
