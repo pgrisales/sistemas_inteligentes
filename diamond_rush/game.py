@@ -71,6 +71,14 @@ def diamonds_pos(state):
         pos.append((i,j))
   return pos 
 
+def kDoor_pos(state):
+  pos = []
+  for i in range(len(state)):
+    for j in range(len(state[0])):
+      if state[i,j] == 'K':
+        pos.append((i,j))
+  return pos 
+
 def keys_pos(state):
   pos = []
   for i in range(len(state)):
