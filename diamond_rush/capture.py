@@ -3,12 +3,12 @@ import numpy as np
 import os
 
 levels_dir = './levels/'
-agent_dir = './blocks/agent/2.png'
+agent_dir = './blocks/agent/3.png'
 levels = [os.path.join(levels_dir,x) for x in os.listdir(levels_dir) if x[len(x)-3:] == 'png']
 
 def agent_pos(levelTemplate):
-  MIN_MATCH_COUNT = 4
-#  MIN_MATCH_COUNT = 10
+#  MIN_MATCH_COUNT = 4
+  MIN_MATCH_COUNT = 2
   level = levelTemplate # queryImage
   level = cv2.cvtColor(level, cv2.COLOR_BGR2GRAY)
   agent = cv2.imread(agent_dir) # trainImage

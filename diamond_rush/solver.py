@@ -255,22 +255,15 @@ def make_path(agent, game, src, goals, visited_trap=set()):
           return make_path(current.agent, current.game, current, goals)
 #          return make_path(current.agent, current.game, current, current.childs)
         else:
-          print('%%%%%%%%%%%%%%%%%% backtrack parent %%%%%%%%%%%%%%%%%%%')
-          if current.parent:
-            print('child: ', current.pos, ' parent: ', current.parent.pos)
-          
           while current.parent:
-            print('child: ', current.pos, ' parent: ', current.parent.pos)
             if current.trap and current.parent.pos not in visited_trap:
-              print(current.pos)
               break
             current.visited = set()
             current = current.parent
 
-          print('it breaks ok')
           if current.parent and current.parent.pos not in visited_trap:
-            print(' child visited: ', current.visited)
-            print(' parent visited ', current.parent.visited)
+            #print(' child visited: ', current.visited)
+            #print(' parent visited ', current.parent.visited)
             current.visited = set()
             current = current.parent
 
