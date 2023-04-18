@@ -484,4 +484,3 @@ def rules(state, level, goal, diamonds, finish, a_pos, a_move, key):
     #print('##################### rules not working #######################')
 
   return state, diamonds, finish, moved, (ni, nj), key
-# rules(state, diamonds, finish, a_pos, a_move, key)

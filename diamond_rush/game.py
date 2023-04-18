@@ -15,7 +15,6 @@ class Game:
     state = np.loadtxt('./levels/default_init_states/' + str(level), dtype=str)
 
     if a_pos != agent_pos(state):
-      # TODO: Done?
       state[agent_pos(state)] = 'p'
       state[a_pos] = 'a'
       return state
